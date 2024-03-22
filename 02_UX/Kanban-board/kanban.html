@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Title Here</title>
+    <!-- Include your CSS files here -->
+    <link rel="stylesheet" href="kanban.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Include any JavaScript libraries or scripts here -->
+  </head>
+  <body id="bod">
+    <div class="body-header">
+        <div class="darksoul-toggle-container" id="container">
+            <div class="darksoul-toggle-border" id="border">
+                <div class="darksoul-toggle" id="toggle" onclick="{roll()}">
+          
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="darksoul-kanban-board">
+        <div class="col" id="todo-col">
+            <div class="heading">
+                <h4  id="heading">To Do</h4>
+                <img id="plus" width="32" height="32" src="https://img.icons8.com/sf-black-filled/64/FFFFFF/plus.png" alt="plus" onclick="modal()"/>
+            </div>
+            <div class="wrapper" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                
+                <div class="darksoul-gradient-card-purple" id="1" draggable="true" ondragstart="drag(event)">
+                    <div class="card">
+                        <div class="header">
+                            <h5 class="purple">DarkSoul-Git</h5>
+                        </div>
+                        <div class="content">
+                            <h3>Index Page Layout Change</h3>
+                            <p>Add the layout from the Blog homepage. Add the layout from the Blog home page.</p>
+                        </div>
+                        <div class="footer">
+                            <div class="date">
+                                <img width="25" height="25" src="https://img.icons8.com/sf-black-filled/64/BFBFFC/calendar-plus.png" alt="calendar-plus"/>
+                                <p>03 Mar 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="darksoul-gradient-card-grey" id="2" draggable="true" ondragstart="drag(event)">
+                    <div class="card">
+                        <div class="header">
+                            <h5 class="grey">DarkSoul-CodePen</h5>
+                        </div>
+                        <div class="content">
+                            <h3>Update About Page</h3>
+                            <p>Add Dribble, CodePen & Instagram profiles in the About Page.</p>
+                        </div>
+                        <div class="footer">
+                            <div class="date">
+                                <img width="25" height="25" src="https://img.icons8.com/sf-black-filled/64/DFDFDF/calendar-plus.png" alt="calendar-plus"/>
+                                <p>03 Mar 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col">
+            <div class="heading">
+                <h4  id="heading">In Progress</h4>
+            </div>
+            <div class="wrapper" id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="darksoul-gradient-card-blue" id="3" draggable="true" ondragstart="drag(event)">
+                    <div class="card">
+                        <div class="header">
+                            <h5 class="blue">DarkSoul-Git</h5>
+                        </div>
+                        <div class="content">
+                            <h3>Add FAQ Schema.org</h3>
+                            <p>Include the FAQ to the Site.</p>
+                        </div>
+                        <div class="footer">
+                            <div class="date">
+                                <img width="25" height="25" src="https://img.icons8.com/sf-black-filled/64/BFD3FC/calendar-plus.png" alt="calendar-plus"/>
+                                <p>03 Mar 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="col">
+            <div class="heading">
+                <h4 id="heading">Done</h4>
+            </div>
+            <div class="wrapper" id="div3" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div class="darksoul-gradient-card-green" id="4" draggable="true" ondragstart="drag(event)">
+                    <div class="card">
+                        <div class="header">
+                            <h5 class="green">DarkSoul-CodePen</h5>
+                        </div>
+                        <div class="content">
+                            <h3>Provide Search Functionality</h3>
+                            <p>Include the search functionality in the Navbar for better User Experience.</p>
+                        </div>
+                        <div class="footer">
+                            <div class="date">
+                                <img width="25" height="25" src="https://img.icons8.com/sf-black-filled/64/CFF2A5/calendar-plus.png" alt="calendar-plus"/>
+                                <p>03 Mar 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="darksoul-modal">
+        <div class="darksoul-modal-content">
+           
+            <div class="darksoul-modal-content-header">
+                <div class="header" style="margin-left: -4px;">
+                        <h5 class="purple" id="preview" style="margin-top: 0px;">Insert - Task</h5>
+                        <div class="color-picker purple" onclick="{purple()}"></div>
+                        <div class="color-picker grey" onclick="{grey()}"></div>
+                        <div class="color-picker green" onclick="{green()}"></div>
+                        <div class="color-picker blue" onclick="{blue()}"></div>
+                </div>
+                
+                <button type="button" onclick="modalclose()" class="modal-close-btn"></button>
+            </div>
+            <div class="darksoul-modal-content-main">
+                <form class="darksoul-form">
+                    
+                    <label>Task</label>
+                    <input id="task" type="text" name="task" required/>
+                    <label>Description</label>
+                    <textarea id="description" name="description"></textarea>
+               
+            </div>
+            <div class="darksoul-modal-content-footer">
+                    <div class="darksoul-glowing-button2">
+                        <button class="darksoul-button2" type="submit">
+                            Submit
+                        </button>
+                    </form>
+                    </div>
+            </div>
+           
+        </div>
+    </div> 
+    <script src="kanban.js"></script>
+  </head>
+  </body>
+</html>
