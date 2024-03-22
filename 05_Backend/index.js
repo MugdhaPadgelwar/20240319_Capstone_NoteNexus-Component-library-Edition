@@ -29,11 +29,6 @@ app.use(cors());
 // Connect to the database
 require("./database/connection");
 
-const User = require("./models/User");
-const Todo = require("./models/Todo");
-const Kanban = require("./models/Kanban");
-const Page = require("./models/Page");
-
 const userRoutes = require("./router/userRouter");
 const todoRoutes = require("./router/todoRouter");
 const kanbanRoutes = require("./router/kanbanRouter");

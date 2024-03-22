@@ -20,7 +20,7 @@ const addKanban =
 
       // Check if all required fields are provided
       if (!userId) {
-        return res.status(400).json({ message: "UserId is required" }); // Bad Request
+        return res.status(400).json({ message: "UserId is required" });
       }
 
       // Validation
@@ -67,7 +67,7 @@ const getKanbanByUserId =
       const userId = req.query.userId;
 
       if (!userId) {
-        return res.status(400).json({ message: "User ID is required" }); // Bad Request
+        return res.status(400).json({ message: "User ID is required" });
       }
 
       // Query the database for kanban boards associated with the user ID
@@ -124,8 +124,6 @@ const getKanbanById =
  * Route to update kanban board by kanban ID
  * @param {function} verifyToken - Function to verify authentication token
  * @param {object} req - Express request object containing route parameters and body
- * @param {string} req.query._id - Kanban ID to identify the kanban board to update
- * @param {object} req.body - Request body containing updated kanban board data
  * @param {object} res - Express response object
  * @returns {object} JSON response containing updated kanban board data or error message
  */
@@ -182,7 +180,6 @@ const updateKanbanById =
  * Route to delete kanban board by kanban ID
  * @param {function} verifyToken - Function to verify authentication token
  * @param {object} req - Express request object containing query parameters
- * @param {string} req.query._id - Kanban ID to identify the kanban board to delete
  * @param {object} res - Express response object
  * @returns {object} JSON response indicating success or failure
  */

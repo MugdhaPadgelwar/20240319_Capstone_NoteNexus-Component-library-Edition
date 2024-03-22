@@ -86,7 +86,6 @@ const getPageByUserId =
  * Route to get page by page ID
  * @param {function} verifyToken - Function to verify authentication token
  * @param {object} req - Express request object containing query parameters
- * @param {string} req.query.id - Page ID to identify the page to retrieve
  * @param {object} res - Express response object
  * @returns {object} JSON response containing page data or error message
  */
@@ -94,11 +93,11 @@ const getPageById =
   (verifyToken,
   async (req, res) => {
     try {
-      const pageId = req.query.id; // Extract page ID from query parameter
+      const pageId = req.query.id;
 
       // Check if page ID is provided
       if (!pageId) {
-        return res.status(400).json({ message: "Page ID is required" }); // Bad Request
+        return res.status(400).json({ message: "Page ID is required" });
       }
 
       // Query the database for the page by its ID
@@ -106,17 +105,15 @@ const getPageById =
 
       // Check if page is found
       if (!page) {
-        return res.status(404).json({ message: "Page not found" }); // Not Found
+        return res.status(404).json({ message: "Page not found" });
       }
 
       // Send the page data as a JSON response
       res.json(page);
     } catch (error) {
-      // For specific error types, return appropriate status codes and error messages
       if (error.name === "CastError") {
-        return res.status(400).json({ message: "Invalid Page ID format" }); // Bad Request
+        return res.status(400).json({ message: "Invalid Page ID format" });
       }
-      // For any other errors, return a generic 500 status code and error message
       res.status(500).json({ error: "Internal Server Error" });
     }
   });
@@ -132,19 +129,19 @@ const updatePageById =
   (verifyToken,
   async (req, res) => {
     try {
-      const pageId = req.query.id; // Extract page ID from query parameter
-      const { content, status } = req.body; // Extract updated content and status from request body
+      const pageId = req.query.id;
+      const { content, status } = req.body;
 
       // Check if page ID is provided
       if (!pageId) {
-        return res.status(400).json({ message: "Page ID is required" }); // Bad Request
+        return res.status(400).json({ message: "Page ID is required" });
       }
 
       // Check if content or status are provided
       if (!content && !status) {
         return res
           .status(400)
-          .json({ message: "Content or status must be provided for update" }); // Bad Request
+          .json({ message: "Content or status must be provided for update" });
       }
 
       // Find the page by its ID and update it
@@ -162,11 +159,9 @@ const updatePageById =
       // Send the updated page data as a JSON response
       res.json(updatedPage);
     } catch (error) {
-      // For specific error types, return appropriate status codes and error messages
       if (error.name === "CastError") {
-        return res.status(400).json({ message: "Invalid Page ID format" }); // Bad Request
+        return res.status(400).json({ message: "Invalid Page ID format" });
       }
-      // For any other errors, return a generic 500 status code and error message
       res.status(500).json({ error: "Internal Server Error" });
     }
   });

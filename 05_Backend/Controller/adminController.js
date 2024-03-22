@@ -2,6 +2,14 @@ const Page = require("../models/Page");
 
 // Import middleware
 const { verifyToken, isAdmin } = require("../middleware/auth");
+
+/**
+ * Retrieves all published pages.
+ * @param {Function} verifyToken - Middleware function to verify user token.
+ * @param {Function} isAdmin - Middleware function to check if user is admin.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const publishedPages =
   (verifyToken,
   isAdmin,
@@ -23,7 +31,13 @@ const rejectedPages = async (req, res) => {
   }
 };
 
-// Route to add a comment to a page in the page table
+/**
+ * Updates the status of a page by its ID.
+ * @param {Function} verifyToken - Middleware function to verify user token.
+ * @param {Function} isAdmin - Middleware function to check if user is admin.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const updatePageStatusById =
   (verifyToken,
   isAdmin,
@@ -67,6 +81,13 @@ const updatePageStatusById =
     }
   });
 
+/**
+ * Adds a comment to a page identified by its ID.
+ * @param {Function} verifyToken - Middleware function to verify user token.
+ * @param {Function} isAdmin - Middleware function to check if user is admin.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 const addComment =
   (verifyToken,
   isAdmin,
