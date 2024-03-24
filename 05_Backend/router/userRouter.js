@@ -12,6 +12,6 @@ const userController = require("../controller/userController");
 router.post("/register", userController.register);
 router.post("/login", userController.login);
 router.post("/forget-password", userController.forgetPassword);
-router.post("/reset-password", userController.resetpassword);
+router.put("/resetpassword", userController.resetpassword);
 
 module.exports = router;

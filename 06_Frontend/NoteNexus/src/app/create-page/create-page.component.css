@@ -1,0 +1,16 @@
+.parent {
+  display: flex;
+  justify-content: space-between;
+}
+textarea {
+  width: 100%;
+  font-family: monospace;
+}
+
+.toolbar button {
+  margin-right: 5px;
+}
+
+.preview {
+  width: 50%;
+}

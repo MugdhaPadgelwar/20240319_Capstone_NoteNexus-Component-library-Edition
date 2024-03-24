@@ -1,0 +1,6 @@
+<div *ngIf="content; else notFound">
+  <markdown [data]="content.content"></markdown>
+</div>
+<ng-template #notFound>
+  <h2>404 - No posts found</h2>
+</ng-template>

@@ -1,0 +1,47 @@
+<div class="parent">
+  <div class="child">
+    <h2>Create a New Blog Post</h2>
+    <div class="toolbar">
+      <button (click)="insertMarkdown('**', 'Some Bold Text', '**')">
+        Bold
+      </button>
+      <button (click)="insertMarkdown('_', 'Some Italic Text', '_')">
+        Italic
+      </button>
+      <button (click)="insertMarkdown('### ', 'This is a Heading!', '')">
+        Heading
+      </button>
+      <button (click)="insertMarkdown('- ', 'List item', '')">List item</button>
+      <button
+        (click)="insertMarkdown('```\n', 'function helloWorld()', '\n```')"
+      >
+        Code block
+      </button>
+      <button (click)="openFileInput()">Insert Image</button>
+      <button (click)="insertMarkdown('[Link Text](', 'https://url.com', ')')">
+        Link
+      </button>
+    </div>
+    <textarea
+      [(ngModel)]="blogContent"
+      rows="10"
+      placeholder="Enter your blog post content (Markdown supported)"
+    ></textarea>
+    <div>
+      <button (click)="savePost()">Save Post</button>
+    </div>
+    <div *ngIf="postSaved">Post saved successfully!</div>
+
+    <input
+      type="file"
+      accept="image/*"
+      #fileInput
+      (change)="handleImageUpload()"
+      style="display: none"
+    />
+  </div>
+  <div class="child preview">
+    <h2>Preview:</h2>
+    <markdown [data]="blogContent" ngPreserveWhitespaces></markdown>
+  </div>
+</div>

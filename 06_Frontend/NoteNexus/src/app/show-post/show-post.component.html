@@ -1,0 +1,17 @@
+<div *ngIf="pages.length > 0; else notFound">
+  <div *ngFor="let page of pages">
+    <h2>{{ page._id }}</h2>
+    <p>User ID: {{ page.userId }}</p>
+
+    <markdown [data]="page.content"></markdown>
+    <a
+      [routerLink]="['/detailpage']"
+      [queryParams]="{ _id: page._id }"
+      class="btn btn-primary px-3"
+      >Detail
+    </a>
+  </div>
+</div>
+<ng-template #notFound>
+  <h2>404 - No posts found</h2>
+</ng-template>
