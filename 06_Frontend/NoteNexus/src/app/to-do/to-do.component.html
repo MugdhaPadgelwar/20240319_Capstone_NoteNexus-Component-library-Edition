@@ -1,0 +1,31 @@
+<div class="main-body">
+  <h1>To do Buddy</h1>
+  <div class="wrapper">
+    <form (submit)="saveTodo()">
+      <input
+        name="todoText"
+        type="text"
+        [(ngModel)]="newTodoText"
+        placeholder="Type your task and hit enter to add it to your list."
+        autocomplete="off"
+        id="todo-input"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <button id="add-button" type="submit">ADD</button>
+    </form>
+    <ul>
+      <li *ngFor="let todo of todos; let i = index" class="todo">
+        <input type="checkbox" [(ngModel)]="todo.completed" />
+        <label id="todo-text" [ngClass]="{ completed: todo.completed }">{{
+          todo.title
+        }}</label>
+        <input
+          type="radio"
+          name="selectedTodo"
+          (change)="updateTodoStatus(todo._id)"
+        />
+        <button (click)="deleteTodo(todo._id)">Delete</button>
+      </li>
+    </ul>
+  </div>
+</div>

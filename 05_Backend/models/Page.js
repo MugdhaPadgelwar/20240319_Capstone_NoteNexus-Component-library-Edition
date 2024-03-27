@@ -6,9 +6,16 @@ const pageSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-  content: {
+  html_code: {
     type: String,
     required: true,
+  },
+  css_code: {
+    type: String,
+  },
+
+  javascript_code: {
+    type: String,
   },
   created_at: {
     type: Date,

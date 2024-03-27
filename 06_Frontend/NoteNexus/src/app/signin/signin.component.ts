@@ -60,7 +60,7 @@ export class SigninComponent {
             localStorage.setItem('userID', userID);
             this.authService.logIn();
             // Navigate to the home page if the token is present
-            if (role == 'user') this.router.navigate(['/']);
+            if (role == 'user') this.router.navigate(['/userdashboard']);
             else {
               this.router.navigate(['/admin-pub-pages']);
             }

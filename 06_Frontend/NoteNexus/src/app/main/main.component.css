@@ -237,6 +237,7 @@ br {
   color: #6b7280;
   background-color: black;
   border: 1px solid #6b7280;
+  text-decoration: none;
 }
 
 @media (max-width: 900px) {

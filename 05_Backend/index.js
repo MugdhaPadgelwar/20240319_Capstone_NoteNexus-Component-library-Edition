@@ -26,6 +26,8 @@ app.use(bodyParser.json());
 // cors middleware
 app.use(cors());
 
+const Page = require("./models/Page");
+
 // Connect to the database
 require("./database/connection");
 

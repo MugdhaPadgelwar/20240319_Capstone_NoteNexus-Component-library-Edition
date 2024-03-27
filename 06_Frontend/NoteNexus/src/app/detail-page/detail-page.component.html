@@ -1,5 +1,18 @@
 <div *ngIf="content; else notFound">
-  <markdown [data]="content.content"></markdown>
+  <div class="content">
+    <pre><code class="language-html">{{ content.html_code }}</code></pre>
+  </div>
+  <div class="content">
+    <pre><code class="language-css">{{ content.css_code }}</code></pre>
+    <button class="custom-copy-button">Copy</button>
+  </div>
+  <div class="content">
+    <pre><code class="language-javascript">{{ content.javascript_code }}</code></pre>
+  </div>
+
+  <button class="button-style" (click)="deletePost()">Delete</button>
+
+  <button class="button-style" (click)="publishPost()">Publish</button>
 </div>
 <ng-template #notFound>
   <h2>404 - No posts found</h2>

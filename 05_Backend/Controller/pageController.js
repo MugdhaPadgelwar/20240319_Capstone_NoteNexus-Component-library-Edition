@@ -10,42 +10,42 @@ const { verifyToken } = require("../middleware/auth");
  * @param {object} res - Express response object
  * @returns {object} JSON response containing created page data or error message
  */
-const createPage =
-  (verifyToken,
-  async (req, res) => {
-    try {
-      const { userId, content, status } = req.body;
+const createPage = async (req, res) => {
+  try {
+    const { userId, html_code, css_code, javascript_code, status } = req.body;
 
-      // Check if all required fields are provided
-      if (!userId || !content) {
-        return res
-          .status(400)
-          .json({ message: "User ID and content are required" }); // Bad Request
-      }
-
-      // Create a new page document
-      const newPage = new Page({
-        userId,
-        content,
-        status: status || "draft", // Set default status if not provided
-      });
-
-      // Save the new page to the database
-      const savedPage = await newPage.save();
-
-      // Send the saved page data as a JSON response
-      res.json(savedPage);
-    } catch (error) {
-      // Check for specific error types and return appropriate status codes and messages
-      if (error.name === "ValidationError") {
-        return res
-          .status(422)
-          .json({ error: "Validation Error: " + error.message }); // Unprocessable Entity
-      }
-      // For any other errors, return a generic 500 status code and error message
-      res.status(500).json({ error: "Internal Server Error" });
+    // Check if all required fields are provided
+    if (!userId || !html_code) {
+      return res.status(400).json({
+        message: "User ID, HTML code are required",
+      }); // Bad Request
     }
-  });
+
+    // Create a new page document
+    const newPage = new Page({
+      userId,
+      html_code,
+      css_code,
+      javascript_code,
+      status: status || "draft", // Set default status if not provided
+    });
+
+    // Save the new page to the database
+    const savedPage = await newPage.save();
+
+    // Send the saved page data as a JSON response
+    res.json(savedPage);
+  } catch (error) {
+    // Check for specific error types and return appropriate status codes and messages
+    if (error.name === "ValidationError") {
+      return res
+        .status(422)
+        .json({ error: "Validation Error: " + error.message }); // Unprocessable Entity
+    }
+    // For any other errors, return a generic 500 status code and error message
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 
 /**
  * Route to get pages by user ID

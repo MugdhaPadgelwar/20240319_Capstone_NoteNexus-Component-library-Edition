@@ -75,7 +75,7 @@ const login = async (req, res) => {
 
     // Validation
     try {
-      validateEmail(email); // Validate email
+      validateEmail(email);
       validatePassword(password);
     } catch (error) {
       return res.status(400).json({ error: error.message });
@@ -100,7 +100,7 @@ const login = async (req, res) => {
     const token = jwt.sign(
       { email: user.email, role: user.role },
       process.env.JWT_SECRET,
-      { expiresIn: "1h" } // Token expires in 1 hour
+      { expiresIn: "1h" }
     );
 
     res.status(200).json({
@@ -108,7 +108,7 @@ const login = async (req, res) => {
       token: token,
       role: user.role,
       userId: user._id,
-      expiresIn: 3600, // Token expires in 1 Month
+      expiresIn: 7200,
     });
     console.log("success");
   } catch (error) {
@@ -280,9 +280,27 @@ const resetpassword = async (req, res, next) => {
   }
 };
 
+/**
+ * Retrieves all published pages.
+ * @param {Function} verifyToken - Middleware function to verify user token.
+ * @param {Function} isAdmin - Middleware function to check if user is admin.
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
+
+const rejectedPages = async (req, res) => {
+  try {
+    const publishedPages = await Page.find({ review_status: "rejected" });
+    res.json(publishedPages);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   register,
   login,
   forgetPassword,
   resetpassword,
+  rejectedPages,
 };
