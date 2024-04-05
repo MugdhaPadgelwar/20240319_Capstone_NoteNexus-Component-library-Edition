@@ -229,8 +229,7 @@ br {
 }
 #library {
   background-color: #555;
-  padding-top: 0.1vh;
-  padding-bottom: 0.1vh;
+
   padding-right: 2vh;
   padding-left: 2vh;
   border-radius: 2vh;

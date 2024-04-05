@@ -9,15 +9,12 @@
     <pre><code class="language-javascript">{{ content.javascript_code }}</code></pre>
   </div>
 
-  <button class="button-style" (click)="approvedPost()">Approved</button>
-
-  <button class="button-style" (click)="rejectedPost()">Rejected</button>
   <button
     class="button-style"
-    [routerLink]="['/add-comment']"
-    [queryParams]="{ id: content._id }"
+    [routerLink]="['/view-comment']"
+    [queryParams]="{ _id: content._id }"
   >
-    Add Comments
+    Read Comments
   </button>
 </div>
 <ng-template #notFound>

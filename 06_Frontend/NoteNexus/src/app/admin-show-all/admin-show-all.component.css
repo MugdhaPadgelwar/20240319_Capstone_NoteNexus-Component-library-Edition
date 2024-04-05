@@ -172,11 +172,8 @@ body {
 }
 
 .basic-card-aqua {
-  background: linear-gradient(
-    177.9deg,
-    rgb(58, 62, 88) 3.6%,
-    rgb(119, 127, 148) 105.8%
-  );
+  background: black;
+  border: 1px dotted white;
 }
 
 .basic-card-aqua .card-content,

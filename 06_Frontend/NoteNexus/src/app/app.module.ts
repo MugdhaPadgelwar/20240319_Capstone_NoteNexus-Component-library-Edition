@@ -23,6 +23,8 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserShowPostComponent } from './user-show-post/user-show-post.component';
 import { EditorComponent } from './editor/editor.component';
 import { HighlightServiceService } from './highlight-service.service';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import {
   HighlightModule,
@@ -35,6 +37,10 @@ import { AdminDashbaordComponent } from './admin-dashbaord/admin-dashbaord.compo
 import { AdminSidebarComponent } from './admin-sidebar/admin-sidebar.component';
 import { AdminDeatilPageComponent } from './admin-deatil-page/admin-deatil-page.component';
 import { ExploreFeedComponent } from './explore-feed/explore-feed.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { AddCommentComponent } from './add-comment/add-comment.component';
+import { ExploreDetailPageComponent } from './explore-detail-page/explore-detail-page.component';
+import { ViewCommmentComponent } from './view-commment/view-commment.component';
 
 @NgModule({
   declarations: [
@@ -56,10 +62,14 @@ import { ExploreFeedComponent } from './explore-feed/explore-feed.component';
     EditorComponent,
 
     ToDoComponent,
-     AdminDashbaordComponent,
-     AdminSidebarComponent,
-     AdminDeatilPageComponent,
-     ExploreFeedComponent,
+    AdminDashbaordComponent,
+    AdminSidebarComponent,
+    AdminDeatilPageComponent,
+    ExploreFeedComponent,
+    AboutUsComponent,
+    AddCommentComponent,
+    ExploreDetailPageComponent,
+    ViewCommmentComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,7 +79,8 @@ import { ExploreFeedComponent } from './explore-feed/explore-feed.component';
     HttpClientModule,
     FormsModule,
     HighlightModule,
-
+    EditorModule,
+    MatSnackBarModule,
     MarkdownModule.forRoot(),
   ],
   providers: [

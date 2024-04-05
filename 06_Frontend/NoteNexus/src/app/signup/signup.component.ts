@@ -63,11 +63,12 @@ export class SignupComponent {
         .post('http://localhost:3000/users/register', userData)
         .subscribe({
           next: (response) => {
-            console.log('Signup successful', response);
+            alert('Signup successful');
 
             this.router.navigate(['/signin']);
           },
           error: (error) => {
+            alert('Signup failed');
             console.error('Signup failed', error);
           },
         });

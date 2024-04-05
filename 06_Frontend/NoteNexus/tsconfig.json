@@ -20,7 +20,7 @@
     "module": "ES2022",
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
-    "types": ["ngx-markdown", "ngx-clipboard", "jest"]
+    "types": ["ngx-markdown", "ngx-clipboard", "jest", "jquery"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

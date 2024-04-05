@@ -1,0 +1,15 @@
+<h1>TinyMCE 7 Angular Demo</h1>
+<editor
+  apiKey="a8p7hkk98se67yo12fzkqslbv8ukwnbysasb1j53iro5q8wp"
+  [init]="{
+    plugins: 'lists link image paste help wordcount',
+    toolbar:
+      'undo redo | blocks | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | help',
+    skin: 'oxide-dark',
+    content_css: 'dark'
+  }"
+  [(ngModel)]="editorComment"
+>
+  ></editor
+>
+<button class="button-style" (click)="saveComment()">Save Content</button>

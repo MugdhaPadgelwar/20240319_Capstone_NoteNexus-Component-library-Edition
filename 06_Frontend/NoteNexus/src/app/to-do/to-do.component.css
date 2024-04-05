@@ -24,7 +24,6 @@ html {
   background-color: black;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 h1 {
@@ -32,7 +31,7 @@ h1 {
   font-size: 3rem;
   font-weight: 800;
   text-transform: uppercase;
-  text-align: center;
+  margin-left: 170px;
   color: #6b7280;
 }
 
@@ -124,6 +123,13 @@ form {
   flex-shrink: 0;
   transition: 200ms ease;
   cursor: pointer;
+}
+
+.text-color {
+  color: white;
+}
+.text-button {
+  margin-left: 550px;
 }
 
 input[type="checkbox"]:checked ~ .custom-checkbox {

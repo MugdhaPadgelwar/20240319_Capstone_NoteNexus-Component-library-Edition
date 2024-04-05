@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { AddCommentComponent } from './add-comment/add-comment.component';
 import { AdminDashbaordComponent } from './admin-dashbaord/admin-dashbaord.component';
 import { AdminDeatilPageComponent } from './admin-deatil-page/admin-deatil-page.component';
 import { AdminShowAllComponent } from './admin-show-all/admin-show-all.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { DetailPageComponent } from './detail-page/detail-page.component';
 import { EditorComponent } from './editor/editor.component';
+import { ExploreDetailPageComponent } from './explore-detail-page/explore-detail-page.component';
+import { ExploreFeedComponent } from './explore-feed/explore-feed.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { MainComponent } from './main/main.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
@@ -16,6 +20,8 @@ import { SignupComponent } from './signup/signup.component';
 import { ToDoComponent } from './to-do/to-do.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserShowPostComponent } from './user-show-post/user-show-post.component';
+import { ViewCommmentComponent } from './view-commment/view-commment.component';
+import { AuthGuardService } from './auth-guard.service';
 
 const routes: Routes = [
   {
@@ -32,6 +38,7 @@ const routes: Routes = [
   },
   {
     path: 'pages',
+
     component: SignupComponent,
   },
   {
@@ -40,6 +47,7 @@ const routes: Routes = [
   },
   {
     path: 'detailpage',
+    canActivate: [AuthGuardService],
     component: DetailPageComponent,
   },
   {
@@ -86,6 +94,26 @@ const routes: Routes = [
   {
     path: 'admindetailpage',
     component: AdminDeatilPageComponent,
+  },
+  {
+    path: 'about-us',
+    component: AboutUsComponent,
+  },
+  {
+    path: 'add-comment',
+    component: AddCommentComponent,
+  },
+  {
+    path: 'explore-feed',
+    component: ExploreFeedComponent,
+  },
+  {
+    path: 'explore-detail-feed',
+    component: ExploreDetailPageComponent,
+  },
+  {
+    path: 'view-comment',
+    component: ViewCommmentComponent,
   },
 ];
 

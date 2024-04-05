@@ -1,4 +1,8 @@
-<!-- <div class="main-div">
+<!-- <pre><code class="language-html"><div class="main-div">
+  
+</div></code></pre> -->
+
+<div class="main-div">
   <div *ngIf="pages && pages.length > 0; else notFound" class="card-category-1">
     <div *ngFor="let page of pages" class="basic-card basic-card-aqua">
       <div class="card-content">
@@ -10,7 +14,7 @@
 
       <div class="card-link">
         <a
-          [routerLink]="['/admindetailpage']"
+          [routerLink]="['/explore-detail-feed']"
           [queryParams]="{ _id: page._id }"
           title="Read Full"
           ><span>Read Full</span></a
@@ -22,5 +26,4 @@
   <ng-template #notFound>
     <h2>404 - No posts found</h2>
   </ng-template>
-</div> -->
-<div></div>
+</div>

@@ -134,25 +134,4 @@ export class ToDoComponent implements OnInit {
       },
     });
   }
-
-  // Closing brace for saveTodo method
-
-  // deleteTodoItem(index: number) {
-  //   this.todos.splice(index, 1);
-  //   this.saveTodos();
-  // }
-
-  // toggleCompleted(index: number) {
-  //   this.todos[index].completed = !this.todos[index].completed;
-  //   this.saveTodos();
-  // }
-
-  // saveTodos() {
-  //   localStorage.setItem('todos', JSON.stringify(this.todos));
-  // }
-
-  // getTodos() {
-  //   const todos = localStorage.getItem('todos');
-  //   this.todos = todos ? JSON.parse(todos) : [];
-  // }
 }

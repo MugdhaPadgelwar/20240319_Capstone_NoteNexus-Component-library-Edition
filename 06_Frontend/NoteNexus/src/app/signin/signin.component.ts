@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signin',
@@ -20,7 +21,8 @@ export class SigninComponent {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private _snackBar: MatSnackBar
   ) {
     // Initialize the sign-in form with form controls and validators
     this.signinForm = this.formBuilder.group({
@@ -47,7 +49,7 @@ export class SigninComponent {
       };
       this.http.post('http://localhost:3000/users/login', loginData).subscribe({
         next: (response: any) => {
-          console.log('Signin successful', response);
+          alert('Signin successful');
           const token = response.token;
           const role = response.role;
           const userID = response.userId;
@@ -62,7 +64,7 @@ export class SigninComponent {
             // Navigate to the home page if the token is present
             if (role == 'user') this.router.navigate(['/userdashboard']);
             else {
-              this.router.navigate(['/admin-pub-pages']);
+              this.router.navigate(['/admindashboard']);
             }
           } else {
             // Optionally handle the case where there's no token in the response
@@ -70,7 +72,6 @@ export class SigninComponent {
           }
         },
         error: (error) => {
-          console.error('Signup failed', error);
           alert('Enter correct email or password');
         },
       });
