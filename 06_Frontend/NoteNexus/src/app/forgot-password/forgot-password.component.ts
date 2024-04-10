@@ -27,14 +27,12 @@ export class ForgotPasswordComponent {
     if (this.forgotPasswordForm.valid) {
       const email = this.getEmail()?.value;
 
-      // Send an HTTP POST request to your backend API
       this.http
         .post<any>('http://localhost:3000/users/forget-password', { email })
         .subscribe(
           (response) => {
             console.log('Reset instructions sent successfully');
             this.resetInstructionsSent = true;
-            // Optionally, handle success response
           },
           (error) => {
             console.error('Error sending reset instructions:', error);

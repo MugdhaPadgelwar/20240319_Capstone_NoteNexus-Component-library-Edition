@@ -15,7 +15,6 @@ export class ShowPostComponent implements OnInit {
   constructor(private route: ActivatedRoute, private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Retrieve token and user ID from local storage
     this.token = localStorage.getItem('userToken');
     console.log(this.token);
     this.userId = localStorage.getItem('userID');
@@ -29,17 +28,14 @@ export class ShowPostComponent implements OnInit {
   }
 
   fetchPagesByUserId(userId: string): void {
-    // Construct the URL for fetching pages by user ID
     const url = `http://localhost:3000/pages/user?userId=${userId}`;
     console.log(url);
 
-    // Set up the HTTP headers including the authorization token
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token}`,
     });
 
-    // Make the HTTP GET request to fetch pages
     this.http.get<any[]>(url, { headers }).subscribe({
       next: (response) => {
         this.pages = response;

@@ -41,15 +41,14 @@ export class ToDoComponent implements OnInit {
     this.http.post<any>(url, todoObj, { headers }).subscribe({
       next: (response) => {
         console.log('Todo added successfully:', response);
-        // Assuming your API responds with the created todo object directly
+
         this.todoSaved = true;
 
-        this.newTodoText = ''; // Clear the input field after adding todo
+        this.newTodoText = '';
         this.getTodos();
       },
       error: (error) => {
         console.error('Error:', error);
-        // Handle error here
       },
     });
   }
@@ -74,7 +73,6 @@ export class ToDoComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error fetching todos:', error);
-        // Handle error here
       },
     });
   }
@@ -95,12 +93,11 @@ export class ToDoComponent implements OnInit {
     this.http.delete<any>(url, { headers }).subscribe({
       next: (response) => {
         console.log('Todo deleted successfully:', response);
-        // Handle deletion success here, such as updating UI
+
         this.getTodos();
       },
       error: (error) => {
         console.error('Error:', error);
-        // Handle error here
       },
     });
   }
@@ -126,11 +123,9 @@ export class ToDoComponent implements OnInit {
     this.http.put<any>(url, updatedTodo, { headers }).subscribe({
       next: (response) => {
         console.log('Todo status updated successfully:', response);
-        // You may want to update the todos list after the status change
       },
       error: (error) => {
         console.error('Error updating todo status:', error);
-        // Handle error here
       },
     });
   }

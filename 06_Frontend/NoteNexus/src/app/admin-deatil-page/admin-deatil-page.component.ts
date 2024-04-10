@@ -24,15 +24,13 @@ export class AdminDeatilPageComponent implements OnInit, AfterViewChecked {
   ) {}
 
   ngOnInit(): void {
-    // Retrieve token and user ID from local storage
     this.token = localStorage.getItem('userToken');
     this.userId = localStorage.getItem('userID');
 
-    // Subscribe to query parameters to get the page ID
     this.route.queryParams.subscribe((params) => {
       this.pageId = params['_id'];
       if (this.pageId) {
-        this.fetchPageContent(); // Fetch page content if page ID is available
+        this.fetchPageContent();
       } else {
         console.error('Page ID not found');
       }
@@ -40,7 +38,6 @@ export class AdminDeatilPageComponent implements OnInit, AfterViewChecked {
   }
 
   fetchPageContent(): void {
-    // Construct the URL for fetching page content by ID
     const url = `http://localhost:3000/pages/get?id=${this.pageId}`;
 
     const headers = new HttpHeaders({
@@ -70,7 +67,6 @@ export class AdminDeatilPageComponent implements OnInit, AfterViewChecked {
       Authorization: `Bearer ${this.token}`,
     });
 
-    // HTTP DELETE request to delete the post
     this.http.delete<any>(url, { headers }).subscribe({
       next: (response) => {
         console.log(response);
@@ -82,22 +78,18 @@ export class AdminDeatilPageComponent implements OnInit, AfterViewChecked {
     });
   }
   approvedPost(): void {
-    // Construct the URL for updating a page by ID
     const url = `http://localhost:3000/admin/update/review-status?id=${this.pageId}`;
 
-    // HTTP headers including the authorization token
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token}`,
     });
 
-    // Request body containing the updated content and status
     const body = {
       content: this.content,
       review_status: 'approved',
     };
 
-    // HTTP POST request to update the page
     this.http.put<any>(url, body, { headers }).subscribe({
       next: (response) => {
         console.log(response);
@@ -109,22 +101,18 @@ export class AdminDeatilPageComponent implements OnInit, AfterViewChecked {
   }
 
   rejectedPost(): void {
-    // Construct the URL for updating a page by ID
     const url = `http://localhost:3000/admin/update/review-status?id=${this.pageId}`;
 
-    // HTTP headers including the authorization token
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token}`,
     });
 
-    // Request body containing the updated content and status
     const body = {
       content: this.content,
       review_status: 'rejected',
     };
 
-    // HTTP POST request to update the page
     this.http.put<any>(url, body, { headers }).subscribe({
       next: (response) => {
         console.log(response);

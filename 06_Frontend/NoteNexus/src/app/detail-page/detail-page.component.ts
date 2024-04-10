@@ -24,15 +24,13 @@ export class DetailPageComponent implements OnInit, AfterViewChecked {
   ) {}
 
   ngOnInit(): void {
-    // Retrieve token and user ID from local storage
     this.token = localStorage.getItem('userToken');
     this.userId = localStorage.getItem('userID');
 
-    // Subscribe to query parameters to get the page ID
     this.route.queryParams.subscribe((params) => {
       this.pageId = params['_id'];
       if (this.pageId) {
-        this.fetchPageContent(); // Fetch page content if page ID is available
+        this.fetchPageContent();
       } else {
         console.error('Page ID not found');
       }
@@ -40,16 +38,13 @@ export class DetailPageComponent implements OnInit, AfterViewChecked {
   }
 
   fetchPageContent(): void {
-    // Construct the URL for fetching page content by ID
     const url = `http://localhost:3000/pages/get?id=${this.pageId}`;
 
-    //  HTTP headers including the authorization token
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token}`,
     });
 
-    //  HTTP GET request to fetch page content
     this.http.get<any>(url, { headers }).subscribe({
       next: (response) => {
         this.content = response;
@@ -65,16 +60,13 @@ export class DetailPageComponent implements OnInit, AfterViewChecked {
   }
 
   deletePost(): void {
-    // Construct the URL for deleting a post by ID
     const url = `http://localhost:3000/pages/delete?id=${this.pageId}`;
 
-    // HTTP headers including the authorization token
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token}`,
     });
 
-    // HTTP DELETE request to delete the post
     this.http.delete<any>(url, { headers }).subscribe({
       next: (response) => {
         console.log(response);
@@ -82,35 +74,30 @@ export class DetailPageComponent implements OnInit, AfterViewChecked {
       },
       error: (error) => {
         console.error('Error:', error);
-        // Handle errors appropriately
       },
     });
   }
   publishPost(): void {
-    // Construct the URL for updating a page by ID
     const url = `http://localhost:3000/pages/update?id=${this.pageId}`;
 
-    // HTTP headers including the authorization token
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token}`,
     });
 
-    // Request body containing the updated content and status
     const body = {
-      content: this.content, // Assuming this is the content of the post
-      status: 'published', // Set the status to "published"
+      content: this.content,
+      status: 'published',
     };
 
-    // HTTP POST request to update the page
     this.http.put<any>(url, body, { headers }).subscribe({
       next: (response) => {
         console.log(response);
-        // Optionally, perform any additional actions after successful publishing
+        alert('Data Published');
+        this.router.navigate(['/showpost']);
       },
       error: (error) => {
         console.error('Error:', error);
-        // Handle errors appropriately
       },
     });
   }

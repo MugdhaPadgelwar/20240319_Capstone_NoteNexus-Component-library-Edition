@@ -16,9 +16,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './reset-password.component.css',
 })
 export class ResetPasswordComponent {
-  /** Form group for resetting password. */
   resetPasswordForm: FormGroup;
-  /** Token received for resetting password. */
+
   token!: string;
 
   /**
@@ -62,7 +61,7 @@ export class ResetPasswordComponent {
       const password = {
         newPassword: newPassword,
       };
-      // Send HTTP request to reset password
+
       this.httpClient
         .put(
           `http://localhost:3000/users/resetpassword?token=${this.token}`,
@@ -70,11 +69,9 @@ export class ResetPasswordComponent {
         )
         .subscribe(
           (response) => {
-            // Password reset successful, navigate to login page
             this.router.navigate(['/signin']);
           },
           (error) => {
-            // Handle error (e.g., display error message)
             console.error('Error resetting password:', error);
           }
         );

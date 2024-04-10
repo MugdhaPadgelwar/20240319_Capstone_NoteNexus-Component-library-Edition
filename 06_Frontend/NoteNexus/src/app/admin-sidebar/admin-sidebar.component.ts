@@ -7,12 +7,11 @@ import { Router } from '@angular/router';
   styleUrl: './admin-sidebar.component.css',
 })
 export class AdminSidebarComponent {
-  constructor(private router: Router) {} // Corrected syntax for constructor
+  constructor(private router: Router) {}
 
   logout() {
-    // Function name should start with lowercase according to convention
     localStorage.clear();
     this.router.navigate(['/']);
-    alert('Logged out'); // Assuming you want to navigate to the root path
+    alert('Logged out');
   }
 }

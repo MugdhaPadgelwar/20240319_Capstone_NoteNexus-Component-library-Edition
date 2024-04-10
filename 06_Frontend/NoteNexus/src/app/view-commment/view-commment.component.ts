@@ -1,11 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'; // You're using `route` but you haven't imported `ActivatedRoute` yet.
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-view-commment',
   templateUrl: './view-commment.component.html',
-  styleUrls: ['./view-commment.component.css'], // <-- Corrected property name
+  styleUrls: ['./view-commment.component.css'],
 })
 export class ViewCommmentComponent implements OnInit {
   content: any;
@@ -14,18 +14,16 @@ export class ViewCommmentComponent implements OnInit {
   userId: any;
   highlighted: boolean = false;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {} // <- Added ActivatedRoute here
+  constructor(private http: HttpClient, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    // Retrieve token and user ID from local storage
     this.token = localStorage.getItem('userToken');
     this.userId = localStorage.getItem('userID');
 
-    // Subscribe to query parameters to get the page ID
     this.route.queryParams.subscribe((params) => {
       this.pageId = params['_id'];
       if (this.pageId) {
-        this.fetchPageContent(); // Fetch page content if page ID is available
+        this.fetchPageContent();
       } else {
         console.error('Page ID not found');
       }
@@ -33,7 +31,6 @@ export class ViewCommmentComponent implements OnInit {
   }
 
   fetchPageContent(): void {
-    // Construct the URL for fetching page content by ID
     const url = `http://localhost:3000/pages/get?id=${this.pageId}`;
 
     const headers = new HttpHeaders({
@@ -52,6 +49,6 @@ export class ViewCommmentComponent implements OnInit {
     });
   }
   convertArrayToString(comments: string[]): string {
-    return comments.join('\n'); // Join comments with a new line
+    return comments.join('\n');
   }
 }

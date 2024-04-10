@@ -13,23 +13,19 @@ export class ExploreFeedComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Retrieve token from local storage
     this.token = localStorage.getItem('userToken');
 
-    this.fetchPublishedPages(); // Fetch only published pages
+    this.fetchPublishedPages();
   }
 
   fetchPublishedPages(): void {
-    // Construct the URL for fetching published pages
     const url = `http://localhost:3000/admin/rejected`;
 
-    // Set up the HTTP headers including the authorization token
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.token}`,
     });
 
-    // Make the HTTP GET request to fetch published pages
     this.http.get<any[]>(url).subscribe({
       next: (response) => {
         this.pages = response;

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-explore-detail-page',
   templateUrl: './explore-detail-page.component.html',
-  styleUrls: ['./explore-detail-page.component.css'], // <-- Corrected property name
+  styleUrls: ['./explore-detail-page.component.css'],
 })
 export class ExploreDetailPageComponent implements OnInit, AfterViewChecked {
   pageId: any;
@@ -24,15 +24,13 @@ export class ExploreDetailPageComponent implements OnInit, AfterViewChecked {
   ) {}
 
   ngOnInit(): void {
-    // Retrieve token and user ID from local storage
     this.token = localStorage.getItem('userToken');
     this.userId = localStorage.getItem('userID');
 
-    // Subscribe to query parameters to get the page ID
     this.route.queryParams.subscribe((params) => {
       this.pageId = params['_id'];
       if (this.pageId) {
-        this.fetchPageContent(); // Fetch page content if page ID is available
+        this.fetchPageContent();
       } else {
         console.error('Page ID not found');
       }
@@ -40,7 +38,6 @@ export class ExploreDetailPageComponent implements OnInit, AfterViewChecked {
   }
 
   fetchPageContent(): void {
-    // Construct the URL for fetching page content by ID
     const url = `http://localhost:3000/pages/get?id=${this.pageId}`;
 
     const headers = new HttpHeaders({
