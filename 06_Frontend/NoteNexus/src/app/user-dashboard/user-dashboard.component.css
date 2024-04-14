@@ -1,11 +1,17 @@
+:host {
+  overflow: hidden; /* Apply overflow hidden to the component */
+}
+
 .main {
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow: hidden;
   margin-top: 40px;
 }
 
 .container {
   display: grid;
+  overflow: hidden;
   grid-template-columns: 30% 80%; /* First column takes 40%, second takes 60% */
   grid-gap: 20px; /* Gap between columns */
 }

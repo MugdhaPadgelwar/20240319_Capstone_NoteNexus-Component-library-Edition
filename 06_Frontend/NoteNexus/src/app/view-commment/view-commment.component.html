@@ -1,11 +1,6 @@
-<editor
-  apiKey="a8p7hkk98se67yo12fzkqslbv8ukwnbysasb1j53iro5q8wp"
-  [init]="{
-    plugins: '',
-    skin: 'oxide-dark',
-    content_css: 'dark'
-  }"
-  [disabled]="true"
-  [initialValue]="convertArrayToString(content.comments)"
->
-</editor>
+<div *ngIf="content">
+  <div class="note">
+    <div class="main-text">Comments:</div>
+    <div class="comment-text" [innerHTML]="content.comments"></div>
+  </div>
+</div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-to-do',
@@ -8,7 +10,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ToDoComponent implements OnInit {
   todos: any[] | undefined;
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private messageService: MessageService
+  ) {}
 
   newTodoText: string = '';
   todoSaved: boolean = false;
@@ -92,7 +98,7 @@ export class ToDoComponent implements OnInit {
 
     this.http.delete<any>(url, { headers }).subscribe({
       next: (response) => {
-        console.log('Todo deleted successfully:', response);
+        this.show();
 
         this.getTodos();
       },
@@ -128,5 +134,16 @@ export class ToDoComponent implements OnInit {
         console.error('Error updating todo status:', error);
       },
     });
+  }
+
+  show() {
+    this.messageService.add({
+      severity: 'custom',
+      summary: 'Success',
+      detail: 'Todo Deleted',
+    });
+  }
+  goHome(): void {
+    this.router.navigate(['/']);
   }
 }

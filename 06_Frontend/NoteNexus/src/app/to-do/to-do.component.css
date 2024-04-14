@@ -12,10 +12,33 @@
   padding: 0;
 }
 
-html {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16pt;
-  color: var(--text-color);
+:host >>> .p-toast-message {
+  background-color: black; /* Green */
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px dotted white;
+}
+
+:host >>> .p-toast-icon-close {
+  color: white;
+}
+
+.icon-container {
+  position: fixed;
+  top: 6px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.circle {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  border: 2px solid #4a4d57;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-body {
@@ -24,6 +47,7 @@ html {
   background-color: black;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 h1 {
@@ -79,28 +103,43 @@ form {
 }
 
 .todo {
+  box-sizing: border-box;
+  padding: 12px 20px;
+  width: 100%;
+  background: none;
+  border-radius: 1000px;
+  font: inherit;
+  color: #f9f9f9;
   margin-bottom: 10px;
+  height: 5vh;
   padding: 0 16px;
   background-color: #1c1d20;
-  border-radius: 15px;
-  display: flex;
+
   align-items: center;
+  display: flex;
+
+  justify-content: space-between;
 }
 
 .todo .todo-text {
   padding: 15px;
   padding-right: 0;
-  flex-grow: 1;
   transition: 200ms ease;
+  align-items: center;
 }
 
 .delete-button {
-  padding: 3px;
-  background: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #6b7280;
+  height: 100%;
+  padding: 0 30px;
   border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 1000px;
+  font: inherit;
+  font-weight: 600;
+  color: #101114;
   cursor: pointer;
 }
 
@@ -112,48 +151,25 @@ form {
   fill: #ff0033;
 }
 
-.custom-checkbox {
-  border: 2px solid var(--accent-color);
-  border-radius: 50%;
-  min-height: 20px;
-  min-width: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  transition: 200ms ease;
-  cursor: pointer;
-}
-
 .text-color {
   color: white;
 }
 .text-button {
-  margin-left: 550px;
-}
-
-input[type="checkbox"]:checked ~ .custom-checkbox {
-  background-color: var(--accent-color);
-}
-
-input[type="checkbox"]:checked ~ .custom-checkbox svg {
-  fill: var(--primary-color);
-}
-
-input[type="checkbox"]:checked ~ .todo-text {
-  text-decoration: line-through;
-  color: var(--secondary-color);
-}
-
-input[type="checkbox"] {
-  display: none;
+  background-color: #6b7280;
+  color: #101114;
+  border-radius: 1000px;
+  padding: 0 30px;
+  font-weight: 600;
+  height: 100%;
+  border: none;
+  margin-left: auto;
+  top: 0;
+  right: 0;
 }
 
 #todo-text {
   color: white;
-}
-.todo input[type="radio"] {
-  margin-right: 5px; /* Adjust spacing between the radio checkbox and the todo text */
+  display: flex;
 }
 
 @media (max-width: 500px) {

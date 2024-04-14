@@ -1,24 +1,26 @@
-<div *ngIf="content; else notFound">
-  <div class="content">
-    <pre><code class="language-html">{{ content.html_code }}</code></pre>
-  </div>
-  <div class="content">
-    <pre><code class="language-css">{{ content.css_code }}</code></pre>
-  </div>
-  <div class="content">
-    <pre><code class="language-javascript">{{ content.javascript_code }}</code></pre>
-  </div>
+<div class="center-main">
+  <p-toast></p-toast>
+  <div *ngIf="content; else notFound">
+    <div class="content">
+      <pre
+        class="code-block"
+      ><code class="language-html">{{ content.html_code }}</code></pre>
+    </div>
+    <div class="content">
+      <pre
+        class="code-block"
+      ><code class="language-css">{{ content.css_code }}</code></pre>
+    </div>
+    <div class="content">
+      <pre
+        class="code-block"
+      ><code class="language-javascript">{{ content.javascript_code }}</code></pre>
+    </div>
 
-  <button class="button-style" (click)="approvedPost()">Approved</button>
+    <button class="button-style" (click)="approvedPost()">Approved</button>
 
-  <button class="button-style" (click)="rejectedPost()">Rejected</button>
-  <button
-    class="button-style"
-    [routerLink]="['/add-comment']"
-    [queryParams]="{ id: content._id }"
-  >
-    Add Comments
-  </button>
+    <button class="button-style" (click)="rejectedPost()">Rejected</button>
+  </div>
 </div>
 <ng-template #notFound>
   <h2>404 - No posts found</h2>

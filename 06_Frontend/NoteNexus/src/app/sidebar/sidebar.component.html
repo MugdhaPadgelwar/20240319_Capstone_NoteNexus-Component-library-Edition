@@ -1,5 +1,6 @@
 <div class="s-layout">
   <!-- Sidebar -->
+  <p-toast></p-toast>
   <div class="s-layout__sidebar">
     <a class="s-sidebar__trigger" href="#0">
       <i class="fa fa-bars"></i>
@@ -8,26 +9,37 @@
     <nav class="s-sidebar__nav">
       <ul>
         <li>
-          <a class="s-sidebar__nav-link" href="#0">
-            <i class="fa fa-camera"></i><em><a routerLink="/todo">TO-DO</a></em>
+          <a class="s-sidebar__nav-link">
+            <i class="fa fa-camera"></i
+            ><em
+              ><a routerLink="/userdashboard" routerLinkActive="active"
+                >TO-DO</a
+              ></em
+            >
           </a>
         </li>
 
         <li>
-          <a class="s-sidebar__nav-link" href="#0">
+          <a class="s-sidebar__nav-link">
             <i class="fa fa-camera"></i
-            ><em><a routerLink="/editor">EDITOR</a></em>
+            ><em
+              ><a routerLink="/editor" routerLinkActive="active">EDITOR</a></em
+            >
           </a>
         </li>
         <li>
-          <a class="s-sidebar__nav-link" href="#0">
+          <a class="s-sidebar__nav-link">
             <i class="fa fa-camera"></i
-            ><em><a routerLink="/showpost">MY-COMPONENTS</a></em>
+            ><em
+              ><a routerLink="/showpost" routerLinkActive="active"
+                >MY-COMPONENTS</a
+              ></em
+            >
           </a>
         </li>
 
         <li>
-          <a class="s-sidebar__nav-link" href="#0">
+          <a class="s-sidebar__nav-link">
             <i class="fa fa-camera"></i
             ><em><a (click)="logout()">Logout</a></em>
           </a>

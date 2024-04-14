@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-signup',
@@ -9,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
+  @HostBinding('style.overflow') overflow = 'hidden';
+
   signupForm: FormGroup;
 
   /**
@@ -20,7 +23,8 @@ export class SignupComponent {
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {
     this.signupForm = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -63,9 +67,10 @@ export class SignupComponent {
         .post('http://localhost:3000/users/register', userData)
         .subscribe({
           next: (response) => {
-            alert('Signup successful');
-
-            this.router.navigate(['/signin']);
+            this.show();
+            setTimeout(() => {
+              this.navigateShowPost();
+            }, 2000);
           },
           error: (error) => {
             alert('Signup failed');
@@ -75,6 +80,17 @@ export class SignupComponent {
     } else {
       console.log('Form is invalid. Please fix the errors.');
     }
+  }
+
+  show() {
+    this.messageService.add({
+      severity: 'custom',
+      summary: 'Success',
+      detail: 'User registered Succesfully',
+    });
+  }
+  navigateShowPost() {
+    this.router.navigate(['/signin']);
   }
 
   /**

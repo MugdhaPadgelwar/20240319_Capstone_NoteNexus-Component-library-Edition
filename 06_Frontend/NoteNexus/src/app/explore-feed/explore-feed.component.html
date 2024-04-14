@@ -1,7 +1,6 @@
-<!-- <pre><code class="language-html"><div class="main-div">
-  
-</div></code></pre> -->
-
+<div class="nav-space">
+  <app-navbar></app-navbar>
+</div>
 <div class="main-div">
   <div *ngIf="pages && pages.length > 0; else notFound" class="card-category-1">
     <div *ngFor="let page of pages" class="basic-card basic-card-aqua">
@@ -14,7 +13,7 @@
 
       <div class="card-link">
         <a
-          [routerLink]="['/explore-detail-feed']"
+          [routerLink]="['/explore']"
           [queryParams]="{ _id: page._id }"
           title="Read Full"
           ><span>Read Full</span></a
@@ -24,6 +23,6 @@
   </div>
 
   <ng-template #notFound>
-    <h2>404 - No posts found</h2>
+    <h2 class="error-text">No posts</h2>
   </ng-template>
 </div>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 interface PostPayload {
   userId: string;
@@ -20,7 +21,10 @@ export class EditorComponent {
   jsCode: string = '';
   postSaved: boolean = false;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+  ) {}
 
   run() {
     const result = document.querySelector('#result') as HTMLIFrameElement;
@@ -61,13 +65,31 @@ export class EditorComponent {
     this.http.post<any>(url, payload, { headers }).subscribe({
       next: (response) => {
         this.postSaved = true;
-        this.htmlCode = '';
-        this.cssCode = '';
-        this.jsCode = '';
+
+        this.show();
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
       },
       error: (error) => {
-        console.error('Error:', error);
+        this.showError(error);
       },
+    });
+  }
+
+  show() {
+    this.messageService.add({
+      severity: 'custom',
+      summary: 'Success',
+      detail: 'Component added!! ',
+    });
+  }
+
+  showError(error: any) {
+    this.messageService.add({
+      severity: 'custom',
+      summary: `${error}`,
+      detail: 'Component added!! ',
     });
   }
 }

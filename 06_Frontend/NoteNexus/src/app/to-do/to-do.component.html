@@ -1,4 +1,14 @@
+<div class="icon-container">
+  <div class="circle">
+    <i
+      class="pi pi-home"
+      (click)="goHome()"
+      [ngStyle]="{ color: '#4a4d57', 'font-size': '2.2rem' }"
+    ></i>
+  </div>
+</div>
 <div class="main-body">
+  <p-toast></p-toast>
   <h1>To do Buddy</h1>
   <div class="wrapper">
     <form (submit)="saveTodo()">

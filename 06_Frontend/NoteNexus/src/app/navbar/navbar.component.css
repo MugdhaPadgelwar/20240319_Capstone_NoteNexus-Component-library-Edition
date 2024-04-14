@@ -4,6 +4,11 @@
   align-items: center;
   background-color: black;
   color: #fff;
+  overflow: hidden;
+}
+
+.active {
+  border-bottom: 2px solid white;
 }
 
 .brand-title {

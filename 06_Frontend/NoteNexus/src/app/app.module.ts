@@ -25,6 +25,10 @@ import { EditorComponent } from './editor/editor.component';
 import { HighlightServiceService } from './highlight-service.service';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonModule } from 'primeng/button';
+import { MessageService } from 'primeng/api';
 
 import {
   HighlightModule,
@@ -41,6 +45,10 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
 import { ExploreDetailPageComponent } from './explore-detail-page/explore-detail-page.component';
 import { ViewCommmentComponent } from './view-commment/view-commment.component';
+import { TestingComponent } from './testing/testing.component';
+import { SubNavComponent } from './sub-nav/sub-nav.component';
+import { DisplayExploreFeedComponent } from './display-explore-feed/display-explore-feed.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +78,10 @@ import { ViewCommmentComponent } from './view-commment/view-commment.component';
     AddCommentComponent,
     ExploreDetailPageComponent,
     ViewCommmentComponent,
+    TestingComponent,
+    SubNavComponent,
+    DisplayExploreFeedComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,9 +93,13 @@ import { ViewCommmentComponent } from './view-commment/view-commment.component';
     HighlightModule,
     EditorModule,
     MatSnackBarModule,
+    ToastModule,
+    BrowserAnimationsModule,
+    ButtonModule,
     MarkdownModule.forRoot(),
   ],
   providers: [
+    MessageService,
     HighlightServiceService,
     {
       provide: HIGHLIGHT_OPTIONS,

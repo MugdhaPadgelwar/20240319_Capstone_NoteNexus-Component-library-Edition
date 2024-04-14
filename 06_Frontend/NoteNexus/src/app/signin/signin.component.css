@@ -1,3 +1,15 @@
+:host >>> .p-toast-message {
+  background-color: black; /* Green */
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px dotted white;
+}
+
+:host >>> .p-toast-icon-close {
+  color: white;
+}
+
 /* Styles for the main container */
 #main {
   display: grid;
@@ -20,6 +32,7 @@
   border-radius: 15px; /* Border radius */
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1); /* Box shadow */
   height: 500px; /* Height of the wrapper */
+  border: 1px dotted grey;
 }
 
 /* Styles for the title */
@@ -124,8 +137,9 @@ form .content label {
 /* Styles for password link */
 form .content .pass-link {
   color: ""; /* Password link color */
-  margin-left: 20px;
+  text-align: right;
   margin-bottom: 40px;
+  margin-left: 240px;
 }
 
 /* Styles for submit button */

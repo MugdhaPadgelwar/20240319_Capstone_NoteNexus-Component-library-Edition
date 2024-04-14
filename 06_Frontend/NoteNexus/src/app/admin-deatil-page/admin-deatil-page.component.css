@@ -1,6 +1,23 @@
+.center-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .main-body {
   width: 80vw;
   height: 80vh;
+}
+
+:host >>> .p-toast-message {
+  background-color: black; /* Green */
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px dotted white;
+}
+
+:host >>> .p-toast-icon-close {
+  color: white;
 }
 
 .content {
@@ -15,4 +32,27 @@
   color: white;
   border: 1px solid white;
   border-radius: 1rem;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+
+.code-block {
+  width: 800px;
+  height: 400px;
+  overflow: auto;
+  border: 1px solid #ccc;
+  margin-bottom: 20px; /* Add some margin between code blocks */
+}
+
+.custom-copy-button {
+  background-color: #4caf50; /* Green color */
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-copy-button:hover {
+  background-color: #3e8e41; /* Darker green on hover */
 }

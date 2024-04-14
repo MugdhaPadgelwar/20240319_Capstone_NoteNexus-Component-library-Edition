@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-add-comment',
@@ -12,10 +13,14 @@ export class AddCommentComponent {
   pageId: string = '';
   token: any;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    private http: HttpClient,
+    private messageService: MessageService
+  ) {}
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
-      this.pageId = params['id'];
+      this.pageId = params['_id'];
     });
   }
 
@@ -34,10 +39,19 @@ export class AddCommentComponent {
     this.http.put<any>(url, body, { headers }).subscribe({
       next: (response) => {
         console.log(response);
+
+        this.show('Comment Added !!');
       },
       error: (error) => {
         console.error('Error:', error);
       },
+    });
+  }
+  show(msg: string) {
+    this.messageService.add({
+      severity: 'custom',
+      summary: 'Success',
+      detail: `${msg}`,
     });
   }
 }

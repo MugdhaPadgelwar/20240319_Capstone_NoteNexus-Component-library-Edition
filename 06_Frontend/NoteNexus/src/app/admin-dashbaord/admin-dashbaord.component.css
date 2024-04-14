@@ -9,3 +9,15 @@
   grid-template-columns: 30% 60%; /* First column takes 40%, second takes 60% */
   grid-gap: 20px; /* Gap between columns */
 }
+
+:host >>> .p-toast-message {
+  background-color: black; /* Green */
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px dotted white;
+}
+
+:host >>> .p-toast-icon-close {
+  color: white;
+}

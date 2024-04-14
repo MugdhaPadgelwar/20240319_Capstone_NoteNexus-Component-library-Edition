@@ -2,6 +2,10 @@ h1 {
   font-size: 1.4em;
 }
 
+.active {
+  border-bottom: 2px solid white; /* Add a blue underline to indicate active link */
+}
+
 em {
   font-style: normal;
 }
@@ -95,10 +99,6 @@ a {
   top: 50%;
   left: 4em;
   transform: translateY(-50%);
-}
-
-.s-sidebar__nav-link:hover {
-  background: black;
 }
 
 .s-sidebar__nav-link > i {

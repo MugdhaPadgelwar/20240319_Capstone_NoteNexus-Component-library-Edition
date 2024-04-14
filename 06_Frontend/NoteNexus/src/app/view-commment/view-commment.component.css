@@ -1,0 +1,55 @@
+.note {
+  background: black;
+  position: relative;
+  margin-top: 20px;
+  padding: 40px;
+  margin-left: 40px;
+  line-height: 1.2;
+  background-size: cover;
+  max-width: 400px;
+  border: 1px dotted white;
+  color: white;
+}
+
+.main-text {
+  color: white;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.comment-text {
+  font-size: 20px;
+  justify-content: center;
+  margin-left: 0px;
+}
+
+.note:before,
+.note:after {
+  content: "";
+  position: absolute;
+  bottom: 14px;
+  width: 40%;
+  height: 10px;
+  box-shadow: 0 5px 14px rgba(0, 0, 0, 0.7);
+  z-index: -1;
+  transition: all 0.3s ease-in-out;
+}
+.note:before {
+  left: 15px;
+  transform: skew(-5deg) rotate(-5deg);
+}
+.note:after {
+  right: 15px;
+  transform: skew(5deg) rotate(5deg);
+}
+@media screen and (max-width: 575px) {
+  .note {
+    padding: 30px;
+    font-size: 26px;
+  }
+}
+@media (max-width: 420px) {
+  .note {
+    margin: 0 10px;
+  }
+}

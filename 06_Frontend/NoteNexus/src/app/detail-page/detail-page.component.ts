@@ -3,6 +3,7 @@ import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HighlightServiceService } from '../highlight-service.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-detail-page',
@@ -20,7 +21,8 @@ export class DetailPageComponent implements OnInit, AfterViewChecked {
     private http: HttpClient,
     private route: ActivatedRoute,
     private highlightService: HighlightServiceService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -69,8 +71,10 @@ export class DetailPageComponent implements OnInit, AfterViewChecked {
 
     this.http.delete<any>(url, { headers }).subscribe({
       next: (response) => {
-        console.log(response);
-        this.router.navigate(['/showpost']);
+        this.show('Component Deleted!!');
+        setTimeout(() => {
+          this.navigateShowPost();
+        }, 2000);
       },
       error: (error) => {
         console.error('Error:', error);
@@ -93,13 +97,34 @@ export class DetailPageComponent implements OnInit, AfterViewChecked {
     this.http.put<any>(url, body, { headers }).subscribe({
       next: (response) => {
         console.log(response);
-        alert('Data Published');
-        this.router.navigate(['/showpost']);
+        this.show('Component Published!!');
+        setTimeout(() => {
+          this.navigateShowPost();
+        }, 2000);
       },
       error: (error) => {
-        console.error('Error:', error);
+        this.showError(error);
       },
     });
+  }
+
+  show(msg: string) {
+    this.messageService.add({
+      severity: 'custom',
+      summary: 'Success',
+      detail: `${msg}`,
+    });
+  }
+
+  showError(msg: any) {
+    this.messageService.add({
+      severity: 'custom',
+      summary: 'Success',
+      detail: `${msg}`,
+    });
+  }
+  navigateShowPost() {
+    this.router.navigate(['/showpost']);
   }
 
   ngAfterViewChecked() {

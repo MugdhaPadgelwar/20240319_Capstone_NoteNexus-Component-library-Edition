@@ -1,3 +1,25 @@
+:host >>> .p-toast-message {
+  background-color: black; /* Green */
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px dotted white;
+}
+
+:host >>> .p-toast-icon-close {
+  color: white;
+}
+
+.nav-space {
+  margin-bottom: 40px;
+}
+
+.error-text {
+  color: white;
+  text-align: center;
+  justify-content: center;
+}
+
 @keyframes down-btn {
   0% {
     bottom: 20px;
@@ -172,11 +194,8 @@ body {
 }
 
 .basic-card-aqua {
-  background: linear-gradient(
-    177.9deg,
-    rgb(58, 62, 88) 3.6%,
-    rgb(119, 127, 148) 105.8%
-  );
+  background: black;
+  border: 1px dotted white;
 }
 
 .basic-card-aqua .card-content,

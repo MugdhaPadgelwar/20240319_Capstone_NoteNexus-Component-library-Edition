@@ -1,16 +1,21 @@
 <nav class="navbar">
   <div class="brand-title">NoteNexus</div>
-  <a href="#" class="toggle-button">
-    <span class="bar"></span>
-    <span class="bar"></span>
-    <span class="bar"></span>
-  </a>
   <div class="navbar-links">
     <ul>
-      <li><a routerLink="/about-us">About</a></li>
-      <li><a routerLink="/explore-feed">Explore</a></li>
-      <li><a routerLink="/signup">Signup</a></li>
-      <!-- Change "Login" to "Signup" -->
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/about-us" routerLinkActive="active">About</a></li>
+      <li>
+        <a routerLink="/explore-feed" routerLinkActive="active">Explore</a>
+      </li>
+      <li *ngIf="!role">
+        <a routerLink="/signup" routerLinkActive="active">Signup</a>
+      </li>
+      <li *ngIf="role == 'user'">
+        <a routerLink="/userdashboard" routerLinkActive="active">Dashboard</a>
+      </li>
+      <li *ngIf="role == 'admin'">
+        <a routerLink="/admindashboard" routerLinkActive="active">Dashboard</a>
+      </li>
     </ul>
   </div>
 </nav>

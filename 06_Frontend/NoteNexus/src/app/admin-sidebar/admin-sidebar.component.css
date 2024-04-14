@@ -1,5 +1,20 @@
+:host >>> .p-toast-message {
+  background-color: black; /* Green */
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px dotted white;
+}
+
+:host >>> .p-toast-icon-close {
+  color: white;
+}
 h1 {
   font-size: 1.4em;
+}
+
+.active {
+  border-bottom: 2px solid white; /* Add a blue underline to indicate active link */
 }
 
 em {
@@ -99,6 +114,7 @@ a {
 
 .s-sidebar__nav-link:hover {
   background: black;
+  width: 60px;
 }
 
 .s-sidebar__nav-link > i {

@@ -3,6 +3,7 @@ import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HighlightServiceService } from '../highlight-service.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-admin-deatil-page',
@@ -20,7 +21,8 @@ export class AdminDeatilPageComponent implements OnInit, AfterViewChecked {
     private http: HttpClient,
     private route: ActivatedRoute,
     private highlightService: HighlightServiceService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +50,6 @@ export class AdminDeatilPageComponent implements OnInit, AfterViewChecked {
     this.http.get<any>(url, { headers }).subscribe({
       next: (response) => {
         this.content = response;
-        console.log(response);
       },
       error: (error) => {
         console.error('Error:', error);
@@ -92,7 +93,7 @@ export class AdminDeatilPageComponent implements OnInit, AfterViewChecked {
 
     this.http.put<any>(url, body, { headers }).subscribe({
       next: (response) => {
-        console.log(response);
+        this.show('Component Approved');
       },
       error: (error) => {
         console.error('Error:', error);
@@ -116,6 +117,7 @@ export class AdminDeatilPageComponent implements OnInit, AfterViewChecked {
     this.http.put<any>(url, body, { headers }).subscribe({
       next: (response) => {
         console.log(response);
+        this.show('Component Rejected');
       },
       error: (error) => {
         console.error('Error:', error);
@@ -128,5 +130,13 @@ export class AdminDeatilPageComponent implements OnInit, AfterViewChecked {
       this.highlightService.highlightAll();
       this.highlighted = true;
     }
+  }
+
+  show(msg: string) {
+    this.messageService.add({
+      severity: 'custom',
+      summary: 'Success',
+      detail: `${msg}`,
+    });
   }
 }

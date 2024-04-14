@@ -1,3 +1,15 @@
+:host >>> .p-toast-message {
+  background-color: black; /* Green */
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px dotted white;
+}
+
+:host >>> .p-toast-icon-close {
+  color: white;
+}
+
 :root {
   --primary-color: black;
   --secondary-color: #white;
@@ -207,7 +219,7 @@ br {
   display: block;
   padding-top: 10vh;
   word-spacing: 2px;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 .hero .hero-heading .heading-inverted {

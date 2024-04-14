@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-show-all',
@@ -10,7 +11,7 @@ export class AdminShowAllComponent implements OnInit {
   pages: any[] = [];
   token: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.token = localStorage.getItem('userToken');
@@ -35,5 +36,10 @@ export class AdminShowAllComponent implements OnInit {
         console.error('Error:', error);
       },
     });
+  }
+
+  goHome(): void {
+    console.log('clicked');
+    this.router.navigate(['/']);
   }
 }

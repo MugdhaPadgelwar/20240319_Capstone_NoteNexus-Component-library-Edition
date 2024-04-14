@@ -1,10 +1,29 @@
-.main-body {
-  width: 80vw;
-  height: 80vh;
+.center-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.code-block {
+  width: 800px;
+  height: 400px;
+  overflow: auto;
+  border: 1px solid #ccc;
+  margin-bottom: 20px; /* Add some margin between code blocks */
+}
+:host >>> .p-toast-message {
+  background-color: black; /* Green */
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px dotted white;
+}
+
+:host >>> .p-toast-icon-close {
+  color: white;
 }
 
 .content {
-  width: 90vw;
   color: white;
 }
 
@@ -15,6 +34,8 @@
   color: white;
   border: 1px solid white;
   border-radius: 1rem;
+  margin-right: 5px;
+  margin-top: 10px;
 }
 
 .custom-copy-button {

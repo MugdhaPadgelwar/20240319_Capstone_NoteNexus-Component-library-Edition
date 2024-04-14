@@ -1,3 +1,22 @@
+:host >>> .p-toast-message {
+  background-color: black; /* Green */
+  color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px dotted white;
+  margin-left: 20px;
+}
+
+:host >>> .p-toast-icon-close {
+  color: white;
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.overflow-maintain {
+  overflow: hidden;
+}
+
 /* Styles for the main container */
 #main {
   display: grid;
@@ -5,6 +24,7 @@
   height: 100vh;
   width: 100vw;
   background-color: black;
+  overflow: hidden;
 }
 
 /* Text selection styles */
@@ -20,6 +40,7 @@
   border-radius: 15px;
   height: 600px;
   box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  border: 1px dotted grey;
 }
 
 /* Styles for the title of the form */

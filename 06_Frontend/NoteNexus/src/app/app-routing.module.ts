@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AddCommentComponent } from './add-comment/add-comment.component';
@@ -22,12 +22,18 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserShowPostComponent } from './user-show-post/user-show-post.component';
 import { ViewCommmentComponent } from './view-commment/view-commment.component';
 import { AuthGuardService } from './auth-guard.service';
+import { TestingComponent } from './testing/testing.component';
+import { SubNavComponent } from './sub-nav/sub-nav.component';
+import { DisplayExploreFeedComponent } from './display-explore-feed/display-explore-feed.component';
+import { AdminReviewComponent } from './admin-review/admin-review.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainComponent,
   },
+
   {
     path: 'signup',
     component: SignupComponent,
@@ -47,15 +53,16 @@ const routes: Routes = [
   },
   {
     path: 'detailpage',
-    canActivate: [AuthGuardService],
+
     component: DetailPageComponent,
   },
   {
     path: 'admin-pub-pages',
+    canActivate: [AuthGuardService],
     component: AdminShowAllComponent,
   },
   {
-    path: 'resetpassword',
+    path: 'resetpassword/:token',
     component: ResetPasswordComponent,
   },
 
@@ -105,15 +112,40 @@ const routes: Routes = [
   },
   {
     path: 'explore-feed',
+
     component: ExploreFeedComponent,
   },
   {
     path: 'explore-detail-feed',
+
     component: ExploreDetailPageComponent,
   },
   {
     path: 'view-comment',
+
     component: ViewCommmentComponent,
+  },
+  {
+    path: 'test',
+    component: TestingComponent,
+  },
+
+  {
+    path: 'sub-nav',
+    component: SubNavComponent,
+  },
+  {
+    path: 'explore',
+    component: DisplayExploreFeedComponent,
+  },
+  {
+    path: 'admin-review',
+    component: AdminReviewComponent,
+  },
+
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
