@@ -15,7 +15,9 @@ const publishedPages =
   isAdmin,
   async (req, res) => {
     try {
-      const publishedPages = await Page.find({ status: "published" });
+      const publishedPages = await Page.find({
+        $and: [{ status: "published" }, { review_status: "pending" }],
+      });
       res.json(publishedPages);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -93,7 +95,7 @@ const addComment =
   isAdmin,
   async (req, res) => {
     try {
-      const { id } = req.query; // Extract id from query parameters
+      const id = req.query.id; // Extract id from query parameters
       const { comments } = req.body;
 
       // Check if id is provided in the query parameters
