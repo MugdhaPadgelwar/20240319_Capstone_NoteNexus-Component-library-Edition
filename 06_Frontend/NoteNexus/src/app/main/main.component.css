@@ -205,7 +205,8 @@ br {
   width: 700px;
   height: 40vh;
   display: block;
-  margin-bottom: 10vh;
+  margin-bottom: 10px;
+  margin-top: 80px;
   margin: auto;
 }
 
@@ -217,7 +218,7 @@ br {
   color: #6b7280;
   margin: 0 auto;
   display: block;
-  padding-top: 10vh;
+  padding-top: 5vh;
   word-spacing: 2px;
   line-height: 1.5;
 }
@@ -268,6 +269,13 @@ br {
 
   .link-primary {
     display: block;
+  }
+
+  .hero .hero-img {
+    margin-top: 20px;
+    width: 90%; /* Adjusted width for smaller screens */
+    height: auto; /* Adjusted height for smaller screens */
+    margin-top: 5vh; /* Adjusted margin for smaller screens */
   }
 }
 

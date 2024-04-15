@@ -10,13 +10,18 @@
   color: white;
 }
 
+.overflow-maintain {
+  overflow: hidden;
+}
+
 /* Styles for the main container */
 #main {
   display: grid;
   place-items: center;
   background-color: black;
-  height: 100vh; /* Full viewport height */
+  height: 90vh; /* Full viewport height */
   width: 100vw; /* Full viewport width */
+  margin-top: 30px;
 }
 
 /* Selection style */
@@ -179,4 +184,22 @@ form .signup-link a:hover {
 
 .error-message {
   color: red;
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    width: 90%; /* Adjusted width for even smaller screens */
+    margin-bottom: 20px; /* Bottom margin */
+  }
+  .wrapper .title {
+    font-size: 30px; /* Adjusted font size for smaller screens */
+    line-height: 80px; /* Adjusted line height for smaller screens */
+  }
+
+  form .content .pass-link {
+    color: ""; /* Password link color */
+    text-align: right;
+    margin-bottom: 20px;
+    margin-left: 200px;
+  }
 }

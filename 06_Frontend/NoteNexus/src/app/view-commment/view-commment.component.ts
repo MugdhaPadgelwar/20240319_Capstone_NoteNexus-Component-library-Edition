@@ -49,6 +49,7 @@ export class ViewCommmentComponent implements OnInit {
     });
   }
   convertArrayToString(comments: string[]): string {
+    console.log(comments);
     return comments.join('\n');
   }
 }

@@ -1,6 +1,6 @@
 .flex-container {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .column {
@@ -13,10 +13,33 @@
 }
 
 .second-column {
-  position: fixed;
-  top: 80;
+  top: 1200;
+  margin-top: 40px;
+
   right: 0;
   width: 500px; /* Fixed width of the second column */
   height: 100%; /* Fill the entire height */
   overflow-y: auto; /* Enable vertical scrolling */
+}
+
+@media screen and (min-width: 768px) {
+  .flex-container {
+    flex-wrap: nowrap; /* Revert to nowrap for larger screens */
+  }
+
+  .column {
+    flex: 1 1 80%; /* Revert flex property for larger screens */
+  }
+
+  .first-column {
+    margin-right: 350px; /* Revert margin-right for larger screens */
+  }
+
+  .second-column {
+    position: fixed; /* Revert position for larger screens */
+    top: 0;
+    right: 0;
+    height: 100%; /* Fill the entire height */
+    overflow-y: auto; /* Enable vertical scrolling */
+  }
 }

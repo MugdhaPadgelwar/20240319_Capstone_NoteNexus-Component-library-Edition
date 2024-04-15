@@ -1,4 +1,4 @@
-<nav class="navbar">
+<!-- <nav class="navbar">
   <div class="brand-title">NoteNexus</div>
   <div class="navbar-links">
     <ul>
@@ -18,4 +18,30 @@
       </li>
     </ul>
   </div>
-</nav>
+</nav> -->
+
+<header class="header">
+  <div class="container">
+    <a href="index.html" class="logo">NoteNexus</a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"
+      ><span class="navicon"></span
+    ></label>
+    <ul class="menu">
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/about-us" routerLinkActive="active">About</a></li>
+      <li>
+        <a routerLink="/explore-feed" routerLinkActive="active">Explore</a>
+      </li>
+      <li *ngIf="!role">
+        <a routerLink="/signup" routerLinkActive="active">Signup</a>
+      </li>
+      <li *ngIf="role == 'user'">
+        <a routerLink="/userdashboard" routerLinkActive="active">Dashboard</a>
+      </li>
+      <li *ngIf="role == 'admin'">
+        <a routerLink="/admindashboard" routerLinkActive="active">Dashboard</a>
+      </li>
+    </ul>
+  </div>
+</header>

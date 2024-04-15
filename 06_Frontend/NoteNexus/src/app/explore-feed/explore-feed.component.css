@@ -10,8 +10,12 @@
   color: white;
 }
 
-.nav-space {
+/* .nav-space {
   margin-bottom: 40px;
+} */
+
+.overflow-maintain {
+  overflow: hidden;
 }
 
 .error-text {
@@ -1402,5 +1406,6 @@ body {
 }
 
 .main-div {
+  margin-top: 80px;
   background-color: black;
 }

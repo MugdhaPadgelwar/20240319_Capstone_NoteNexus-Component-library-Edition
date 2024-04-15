@@ -5,21 +5,27 @@
       [style]="{ 'background-color': 'black', color: 'white' }"
     ></p-toast>
 
-    <div class="content">
+    <div class="content" *ngIf="content.html_code">
       <pre><code class="language-html">{{ content.html_code }}</code></pre>
     </div>
-    <div class="content">
+    <div class="content" *ngIf="content.css_code">
       <pre><code class="language-css">{{ content.css_code }}</code></pre>
     </div>
-    <div class="content">
+    <div class="content" *ngIf="content.javascript_code">
       <pre><code class="language-javascript">{{ content.javascript_code }}</code></pre>
     </div>
 
     <button class="button-style" (click)="deletePost()">Delete</button>
 
-    <button class="button-style" (click)="publishPost()">Publish</button>
+    <button
+      class="button-style"
+      (click)="publishPost()"
+      [disabled]="content.status === 'published'"
+    >
+      Publish
+    </button>
   </div>
-  <ng-template #notFound>
-    <h2>404 - No posts found</h2>
-  </ng-template>
 </div>
+<ng-template #notFound>
+  <h2>404 - No posts found</h2>
+</ng-template>

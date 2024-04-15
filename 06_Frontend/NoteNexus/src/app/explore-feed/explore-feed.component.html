@@ -1,28 +1,32 @@
-<div class="nav-space">
+<div class="overflow-maintain">
   <app-navbar></app-navbar>
-</div>
-<div class="main-div">
-  <div *ngIf="pages && pages.length > 0; else notFound" class="card-category-1">
-    <div *ngFor="let page of pages" class="basic-card basic-card-aqua">
-      <div class="card-content">
-        <span class="card-title"></span>
-        <p class="card-text">
-          <code class="language-html">{{ page.html_code.slice(0, 30) }}</code>
-        </p>
-      </div>
 
-      <div class="card-link">
-        <a
-          [routerLink]="['/explore']"
-          [queryParams]="{ _id: page._id }"
-          title="Read Full"
-          ><span>Read Full</span></a
-        >
+  <div class="main-div">
+    <div
+      *ngIf="pages && pages.length > 0; else notFound"
+      class="card-category-1"
+    >
+      <div *ngFor="let page of pages" class="basic-card basic-card-aqua">
+        <div class="card-content">
+          <span class="card-title"></span>
+          <p class="card-text">
+            <code class="language-html">{{ page.html_code.slice(0, 30) }}</code>
+          </p>
+        </div>
+
+        <div class="card-link">
+          <a
+            [routerLink]="['/explore']"
+            [queryParams]="{ _id: page._id }"
+            title="Read Full"
+            ><span>Read Full</span></a
+          >
+        </div>
       </div>
     </div>
-  </div>
 
-  <ng-template #notFound>
-    <h2 class="error-text">No posts</h2>
-  </ng-template>
+    <ng-template #notFound>
+      <h2 class="error-text">No posts</h2>
+    </ng-template>
+  </div>
 </div>

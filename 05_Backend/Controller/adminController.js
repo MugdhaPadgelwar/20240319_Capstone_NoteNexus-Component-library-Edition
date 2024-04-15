@@ -69,16 +69,14 @@ const updatePageStatusById =
 
       // Check if page is found
       if (!updatedPage) {
-        return res.status(404).json({ message: "Page not found" }); // Not Found
+        return res.status(404).json({ message: "Page not found" });
       }
 
       res.json(updatedPage);
     } catch (error) {
-      // For specific error types, return appropriate status codes and error messages
       if (error.name === "CastError") {
-        return res.status(400).json({ message: "Invalid Page ID format" }); // Bad Request
+        return res.status(400).json({ message: "Invalid Page ID format" });
       }
-      // For any other errors, return a generic 500 status code and error message
       res.status(500).json({ error: "Internal Server Error" });
     }
   });

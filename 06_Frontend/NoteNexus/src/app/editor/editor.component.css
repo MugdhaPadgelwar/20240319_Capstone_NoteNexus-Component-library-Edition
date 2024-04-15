@@ -114,3 +114,18 @@ a {
   float: right;
   cursor: pointer;
 }
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .button-design {
+    width: 12vw;
+    height: 5vh;
+  }
+}
+
+@media (max-width: 500px) {
+  .button-design {
+    width: 20vw;
+    height: 6vh;
+  }
+}

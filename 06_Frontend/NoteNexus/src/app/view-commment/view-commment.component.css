@@ -42,14 +42,21 @@
   right: 15px;
   transform: skew(5deg) rotate(5deg);
 }
-@media screen and (max-width: 575px) {
+
+@media screen and (max-width: 768px) {
   .note {
-    padding: 30px;
-    font-size: 26px;
+    max-width: 60%; /* Adjusted maximum width for smaller screens */
+    margin: 20px auto; /* Centered the note horizontally on smaller screens */
+    margin-left: 10px; /* Adjusted margin-left for smaller screens */
+    padding: 20px; /* Reduced padding for smaller screens */
+    font-size: 18px; /* Adjusted font size for smaller screens */
   }
-}
-@media (max-width: 420px) {
-  .note {
-    margin: 0 10px;
+
+  .main-text {
+    font-size: 24px; /* Adjusted font size for smaller screens */
+  }
+
+  .comment-text {
+    font-size: 16px; /* Adjusted font size for smaller screens */
   }
 }

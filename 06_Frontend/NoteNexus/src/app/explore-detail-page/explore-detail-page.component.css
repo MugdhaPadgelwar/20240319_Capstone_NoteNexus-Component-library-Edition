@@ -5,7 +5,7 @@
 }
 
 .code-block {
-  width: 800px;
+  max-width: 800px;
   height: 400px;
   overflow: auto;
   border: 1px solid #ccc;
@@ -49,4 +49,16 @@
 
 .custom-copy-button:hover {
   background-color: #3e8e41; /* Darker green on hover */
+}
+
+@media screen and (max-width: 768px) {
+  .code-block {
+    width: 50%;
+  }
+
+  .button-style {
+    width: auto;
+    margin-right: 5px;
+    margin-top: 10px;
+  }
 }

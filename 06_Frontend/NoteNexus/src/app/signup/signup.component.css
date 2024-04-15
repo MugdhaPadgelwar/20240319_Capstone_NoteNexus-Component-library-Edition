@@ -25,6 +25,7 @@
   width: 100vw;
   background-color: black;
   overflow: hidden;
+  margin-top: 30px;
 }
 
 /* Text selection styles */
@@ -183,4 +184,23 @@ form .signup-link a:hover {
 /* Styles for error messages */
 .error-message {
   color: red;
+}
+
+/* Media Queries for responsiveness */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    width: 80%; /* Adjusted width for smaller screens */
+    margin-bottom: 30px; /* Adjusted margin for better spacing */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    width: 90%; /* Adjusted width for even smaller screens */
+    margin-bottom: 20px; /* Adjusted margin for better spacing */
+  }
+  .wrapper .title {
+    font-size: 30px; /* Adjusted font size for smaller screens */
+    line-height: 80px; /* Adjusted line height for smaller screens */
+  }
 }
