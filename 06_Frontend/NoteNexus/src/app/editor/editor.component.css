@@ -115,7 +115,6 @@ a {
   cursor: pointer;
 }
 
-/* Media query for responsiveness */
 @media (max-width: 768px) {
   .button-design {
     width: 12vw;

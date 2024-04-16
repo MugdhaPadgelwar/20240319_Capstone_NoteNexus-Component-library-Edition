@@ -45,18 +45,18 @@
 
 @media screen and (max-width: 768px) {
   .note {
-    max-width: 60%; /* Adjusted maximum width for smaller screens */
-    margin: 20px auto; /* Centered the note horizontally on smaller screens */
-    margin-left: 10px; /* Adjusted margin-left for smaller screens */
-    padding: 20px; /* Reduced padding for smaller screens */
-    font-size: 18px; /* Adjusted font size for smaller screens */
+    max-width: 60%;
+    margin: 20px auto;
+    margin-left: 10px;
+    padding: 20px;
+    font-size: 18px;
   }
 
   .main-text {
-    font-size: 24px; /* Adjusted font size for smaller screens */
+    font-size: 24px;
   }
 
   .comment-text {
-    font-size: 16px; /* Adjusted font size for smaller screens */
+    font-size: 16px;
   }
 }

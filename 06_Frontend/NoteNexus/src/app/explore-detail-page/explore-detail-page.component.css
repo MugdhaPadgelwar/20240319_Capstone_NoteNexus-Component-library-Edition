@@ -9,10 +9,10 @@
   height: 400px;
   overflow: auto;
   border: 1px solid #ccc;
-  margin-bottom: 20px; /* Add some margin between code blocks */
+  margin-bottom: 20px;
 }
 :host >>> .p-toast-message {
-  background-color: black; /* Green */
+  background-color: black;
   color: white;
   border-radius: 5px;
   padding: 10px;
@@ -39,7 +39,7 @@
 }
 
 .custom-copy-button {
-  background-color: #4caf50; /* Green color */
+  background-color: #4caf50;
   color: white;
   padding: 5px 10px;
   border: none;
@@ -48,7 +48,7 @@
 }
 
 .custom-copy-button:hover {
-  background-color: #3e8e41; /* Darker green on hover */
+  background-color: #3e8e41;
 }
 
 @media screen and (max-width: 768px) {

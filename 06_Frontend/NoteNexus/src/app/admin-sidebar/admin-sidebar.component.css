@@ -14,7 +14,7 @@ h1 {
 }
 
 .active {
-  border-bottom: 2px solid white; /* Add a blue underline to indicate active link */
+  border-bottom: 2px solid white;
 }
 
 em {
@@ -26,7 +26,6 @@ a {
   color: inherit;
 }
 
-/* Layout */
 .s-layout {
   display: flex;
   width: 70%;
@@ -48,7 +47,6 @@ a {
   flex: 1;
 }
 
-/* Sidebar */
 .s-sidebar__trigger {
   z-index: 2;
   position: fixed;

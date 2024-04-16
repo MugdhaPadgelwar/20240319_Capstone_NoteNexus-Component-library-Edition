@@ -14,50 +14,44 @@
   overflow: hidden;
 }
 
-/* Styles for the main container */
 #main {
   display: grid;
   place-items: center;
   background-color: black;
-  height: 90vh; /* Full viewport height */
-  width: 100vw; /* Full viewport width */
+  height: 90vh;
+  width: 100vw;
   margin-top: 30px;
 }
 
-/* Selection style */
 ::selection {
-  background: #1b1a55; /* Selected text background */
-  color: #fff; /* Selected text color */
+  background: #1b1a55;
+  color: #fff;
 }
 
-/* Styles for the wrapper */
 .wrapper {
-  width: 500px; /* Width of the wrapper */
-  background: #fff; /* Background color */
-  border-radius: 15px; /* Border radius */
-  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1); /* Box shadow */
-  height: 500px; /* Height of the wrapper */
+  width: 500px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  height: 500px;
   border: 1px dotted grey;
 }
 
-/* Styles for the title */
 .wrapper .title {
-  font-size: 35px; /* Font size */
-  font-weight: 600; /* Font weight */
-  text-align: center; /* Text alignment */
-  line-height: 100px; /* Line height */
-  color: white; /* Text color */
-  user-select: none; /* Prevent text selection */
-  border-radius: 15px 15px 0 0; /* Border radius */
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 100px;
+  color: white;
+  user-select: none;
+  border-radius: 15px 15px 0 0;
   background-color: black;
 }
 
-/* Styles for the form */
 .wrapper form {
-  padding: 10px 30px 50px 30px; /* Padding */
+  padding: 10px 30px 50px 30px;
 }
 
-/* Styles for form fields */
 .wrapper form .field {
   height: 50px; /* Height of the field */
   width: 100%; /* Width of the field */

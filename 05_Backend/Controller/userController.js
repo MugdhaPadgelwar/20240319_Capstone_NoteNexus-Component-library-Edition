@@ -20,10 +20,9 @@ const jwt = require("jsonwebtoken");
 const register = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
-    // Validate request body
+
     validateUser(req.body);
 
-    // Check if the email is already in use
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(409).json({
@@ -31,10 +30,8 @@ const register = async (req, res) => {
       });
     }
 
-    // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create a new User document with provided user details
     const newUser = new User({
       name,
       email,
@@ -42,14 +39,12 @@ const register = async (req, res) => {
       role,
     });
 
-    // Save the new User document to the database
     const savedUser = await newUser.save();
 
     res.status(201).json(savedUser);
   } catch (error) {
     console.error(error);
 
-    // Check if the error is a validation error
     if (
       error.name === "ValidationError" ||
       error.message.startsWith("ValidationError")
@@ -73,7 +68,6 @@ const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Validation
     try {
       validateEmail(email);
       validatePassword(password);
@@ -81,7 +75,6 @@ const login = async (req, res) => {
       return res.status(400).json({ error: error.message });
     }
 
-    // Find user by email
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(401).json({
@@ -89,14 +82,13 @@ const login = async (req, res) => {
       });
     }
 
-    // Compare password
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(401).json({
         error: "Invalid email or password.",
       });
     }
-    // Generate JWT token
+
     const token = jwt.sign(
       { email: user.email, role: user.role },
       process.env.JWT_SECRET,
@@ -128,42 +120,34 @@ const forgetPassword = async (req, res, next) => {
   const email = req.body.email;
 
   try {
-    // Find user by email
     const user = await User.findOne({
       email: { $regex: email, $options: "i" },
     });
 
-    // If user not found, create and return a custom 404 error
     if (!user) {
       const error = new Error("User not found");
       error.status = 404;
       return next(error);
     }
 
-    // Payload for JWT token
     const payload = {
       email: user.email,
     };
 
-    // Expiry time for JWT token (in seconds)
     const expiryTime = 300;
 
-    // Sign JWT token with payload and secret key
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: expiryTime,
     });
 
-    // Save token in the database
     const newToken = new UserToken({
       userId: user._id,
       token: token,
     });
 
     try {
-      // Attempt to save the token
       await newToken.save();
 
-      // Configure nodemailer transporter
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
@@ -171,8 +155,6 @@ const forgetPassword = async (req, res, next) => {
           pass: "wxyw fpxk eipf bhxr",
         },
       });
-
-      // Email options
 
       const mailOptions = {
         from: "mugdha.padgelwar2024@gmail.com",
@@ -199,19 +181,15 @@ const forgetPassword = async (req, res, next) => {
               `,
       };
 
-      // Send email
       await transporter.sendMail(mailOptions);
 
-      // Send response
       res
         .status(200)
         .json({ success: true, message: "Password reset instructions sent" });
     } catch (error) {
-      // If an error occurs during sending email, handle it
       return next(error);
     }
   } catch (error) {
-    // If an error occurs during finding user or saving token, handle it
     return next(error);
   }
 };
@@ -226,16 +204,14 @@ const forgetPassword = async (req, res, next) => {
 const resetpassword = async (req, res, next) => {
   try {
     const { newPassword } = req.body;
-    const token = req.query.token; // Extracting token from query parameters
+    const token = req.query.token;
 
-    // Check if token and newPassword are provided
     if (!token || !newPassword) {
       return res
         .status(400)
         .json({ message: "Token and newPassword are required" });
     }
 
-    // Verify the JWT token
     jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
       if (err) {
         return res.status(401).json({ message: "Invalid or expired token" });
@@ -244,30 +220,24 @@ const resetpassword = async (req, res, next) => {
       const email = decoded.email;
       console.log(email);
 
-      // Find user by ID
       const user = await User.findOne({ email: email });
 
-      // Check if user exists
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
 
-      // Encrypt the new password
       const salt = await bcrypt.genSalt(10);
       const encryptedPassword = await bcrypt.hash(newPassword, salt);
 
-      // Update user's password
       user.password = encryptedPassword;
 
       try {
-        // Save the updated user
         const updateUser = await User.findOneAndUpdate(
           { _id: user._id },
           { $set: user },
           { new: true }
         );
 
-        // Respond with success message
         return res.status(200).json({ message: "Password reset successfully" });
       } catch (error) {
         console.error("Error updating user:", error);

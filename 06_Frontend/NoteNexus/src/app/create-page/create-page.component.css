@@ -16,7 +16,7 @@ textarea {
 }
 
 :host >>> .p-toast-message {
-  background-color: black; /* Green */
+  background-color: black;
   color: white;
   border-radius: 5px;
   padding: 10px;

@@ -14,35 +14,30 @@ const createPage = async (req, res) => {
   try {
     const { userId, html_code, css_code, javascript_code, status } = req.body;
 
-    // Check if all required fields are provided
     if (!userId || !html_code) {
       return res.status(400).json({
         message: "User ID, HTML code are required",
-      }); // Bad Request
+      });
     }
 
-    // Create a new page document
     const newPage = new Page({
       userId,
       html_code,
       css_code,
       javascript_code,
-      status: status || "draft", // Set default status if not provided
+      status: status || "draft",
     });
 
-    // Save the new page to the database
     const savedPage = await newPage.save();
 
-    // Send the saved page data as a JSON response
     res.json(savedPage);
   } catch (error) {
-    // Check for specific error types and return appropriate status codes and messages
     if (error.name === "ValidationError") {
       return res
         .status(422)
-        .json({ error: "Validation Error: " + error.message }); // Unprocessable Entity
+        .json({ error: "Validation Error: " + error.message });
     }
-    // For any other errors, return a generic 500 status code and error message
+
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -58,26 +53,22 @@ const getPageByUserId =
   (verifyToken,
   async (req, res) => {
     try {
-      const userId = req.query.userId; // Extract user ID from query parameter
+      const userId = req.query.userId;
 
-      // Check if user ID is provided
       if (!userId) {
-        return res.status(400).json({ message: "User ID is required" }); // Bad Request
+        return res.status(400).json({ message: "User ID is required" });
       }
 
-      // Query the database for pages by user ID
       const pages = await Page.find({ userId });
 
       if (!pages || pages.length === 0) {
         return res
           .status(404)
-          .json({ message: "No pages found for the provided user ID" }); // Not Found
+          .json({ message: "No pages found for the provided user ID" });
       }
 
-      // Send the pages data as a JSON response
       res.json(pages);
     } catch (error) {
-      // If there's an error, send a 500 status code and the error message
       res.status(500).json({ error: "Internal Server Error" });
     }
   });
@@ -95,20 +86,16 @@ const getPageById =
     try {
       const pageId = req.query.id;
 
-      // Check if page ID is provided
       if (!pageId) {
         return res.status(400).json({ message: "Page ID is required" });
       }
 
-      // Query the database for the page by its ID
       const page = await Page.findById(pageId);
 
-      // Check if page is found
       if (!page) {
         return res.status(404).json({ message: "Page not found" });
       }
 
-      // Send the page data as a JSON response
       res.json(page);
     } catch (error) {
       if (error.name === "CastError") {
@@ -132,31 +119,26 @@ const updatePageById =
       const pageId = req.query.id;
       const { content, status } = req.body;
 
-      // Check if page ID is provided
       if (!pageId) {
         return res.status(400).json({ message: "Page ID is required" });
       }
 
-      // Check if content or status are provided
       if (!content && !status) {
         return res
           .status(400)
           .json({ message: "Content or status must be provided for update" });
       }
 
-      // Find the page by its ID and update it
       const updatedPage = await Page.findByIdAndUpdate(
         pageId,
         { content, status },
         { new: true }
       );
 
-      // Check if page is found
       if (!updatedPage) {
-        return res.status(404).json({ message: "Page not found" }); // Not Found
+        return res.status(404).json({ message: "Page not found" });
       }
 
-      // Send the updated page data as a JSON response
       res.json(updatedPage);
     } catch (error) {
       if (error.name === "CastError") {
@@ -177,29 +159,23 @@ const deleteByPageId =
   (verifyToken,
   async (req, res) => {
     try {
-      const pageId = req.query.id; // Extract page ID from query parameter
+      const pageId = req.query.id;
 
-      // Check if page ID is provided
       if (!pageId) {
-        return res.status(400).json({ message: "Page ID is required" }); // Bad Request
+        return res.status(400).json({ message: "Page ID is required" });
       }
 
-      // Find the page by its ID and delete it
       const deletedPage = await Page.findByIdAndDelete(pageId);
 
-      // Check if page is found and deleted
       if (!deletedPage) {
-        return res.status(404).json({ message: "Page not found" }); // Not Found
+        return res.status(404).json({ message: "Page not found" });
       }
 
-      // Send a success message as a JSON response
       res.json({ message: "Page deleted successfully" });
     } catch (error) {
-      // For specific error types, return appropriate status codes and error messages
       if (error.name === "CastError") {
-        return res.status(400).json({ message: "Invalid Page ID format" }); // Bad Request
+        return res.status(400).json({ message: "Invalid Page ID format" });
       }
-      // For any other errors, return a generic 500 status code and error message
       res.status(500).json({ error: "Internal Server Error" });
     }
   });

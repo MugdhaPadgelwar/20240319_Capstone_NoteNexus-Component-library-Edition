@@ -9,7 +9,7 @@
 }
 
 :host >>> .p-toast-message {
-  background-color: black; /* Green */
+  background-color: black;
   color: white;
   border-radius: 5px;
   padding: 10px;
@@ -37,7 +37,7 @@
 }
 
 .custom-copy-button {
-  background-color: #4caf50; /* Green color */
+  background-color: #4caf50;
   color: white;
   padding: 5px 10px;
   border: none;
@@ -46,24 +46,23 @@
 }
 
 .custom-copy-button:hover {
-  background-color: #3e8e41; /* Darker green on hover */
+  background-color: #3e8e41;
 }
 
 .button-style:disabled {
-  filter: blur(2px); /* Apply blur effect when the button is disabled */
+  filter: blur(2px);
 }
 
-/* Media query for responsiveness */
 @media (max-width: 768px) {
   .button-style {
-    width: 12vw; /* Adjust width for smaller screens */
-    height: 5vh; /* Adjust height for smaller screens */
+    width: 12vw;
+    height: 5vh;
   }
 }
 
 @media (max-width: 500px) {
   .button-style {
-    width: 17vw; /* Further adjust width for even smaller screens */
-    height: 6vh; /* Further adjust height for even smaller screens */
+    width: 17vw;
+    height: 6vh;
   }
 }

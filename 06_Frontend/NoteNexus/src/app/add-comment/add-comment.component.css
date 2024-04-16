@@ -8,7 +8,7 @@
   border-radius: 1rem;
 }
 :host >>> .p-toast-message {
-  background-color: black; /* Green */
+  background-color: black;
   color: white;
   border-radius: 5px;
   padding: 10px;
@@ -17,4 +17,12 @@
 
 :host >>> .p-toast-icon-close {
   color: white;
+}
+
+@media screen and (max-width: 768px) {
+  .button-style {
+    width: 50%;
+    height: auto;
+    margin: 10px auto;
+  }
 }

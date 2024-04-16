@@ -48,26 +48,22 @@ const updatePageStatusById =
       const pageId = req.query.id;
       const { review_status } = req.body;
 
-      // Check if page ID is provided
       if (!pageId) {
-        return res.status(400).json({ message: "Page ID is required" }); // Bad Request
+        return res.status(400).json({ message: "Page ID is required" });
       }
 
-      // Check if content or status are provided
       if (!review_status) {
         return res
           .status(400)
-          .json({ message: "status must be provided for update" }); // Bad Request
+          .json({ message: "status must be provided for update" });
       }
 
-      // Find the page by its ID and update it
       const updatedPage = await Page.findByIdAndUpdate(
         pageId,
         { review_status },
         { new: true }
       );
 
-      // Check if page is found
       if (!updatedPage) {
         return res.status(404).json({ message: "Page not found" });
       }
@@ -96,7 +92,6 @@ const addComment =
       const id = req.query.id; // Extract id from query parameters
       const { comments } = req.body;
 
-      // Check if id is provided in the query parameters
       if (!id) {
         return res
           .status(400)

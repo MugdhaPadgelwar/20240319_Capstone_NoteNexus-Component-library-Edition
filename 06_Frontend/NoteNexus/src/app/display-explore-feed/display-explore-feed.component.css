@@ -17,29 +17,29 @@
   margin-top: 40px;
 
   right: 0;
-  width: 500px; /* Fixed width of the second column */
-  height: 100%; /* Fill the entire height */
-  overflow-y: auto; /* Enable vertical scrolling */
+  width: 500px;
+  height: 100%;
+  overflow-y: auto;
 }
 
 @media screen and (min-width: 768px) {
   .flex-container {
-    flex-wrap: nowrap; /* Revert to nowrap for larger screens */
+    flex-wrap: nowrap;
   }
 
   .column {
-    flex: 1 1 80%; /* Revert flex property for larger screens */
+    flex: 1 1 80%;
   }
 
   .first-column {
-    margin-right: 350px; /* Revert margin-right for larger screens */
+    margin-right: 350px;
   }
 
   .second-column {
-    position: fixed; /* Revert position for larger screens */
+    position: fixed;
     top: 0;
     right: 0;
-    height: 100%; /* Fill the entire height */
-    overflow-y: auto; /* Enable vertical scrolling */
+    height: 100%;
+    overflow-y: auto;
   }
 }
